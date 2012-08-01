@@ -1,0 +1,8 @@
+#git usage
+git inti //初始化
+touch README
+git add README //更新README文件
+git commit -m 'first commit'
+git commit -a //提交所有改变
+git remote add origin git@github.com:ligl/YuZhong.git //连接远程git项目
+git push -u origin master //将本地项目更新到github
