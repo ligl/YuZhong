@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
+import cn.amose.yuzhong.database.PreferenceHelper;
 import cn.amose.yuzhong.image.ImageCache;
 
 /**
@@ -47,6 +48,7 @@ public class YZApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		PreferenceHelper.init(getApplicationContext());
 	}
 
 	private ExecutorService mExecutorService;

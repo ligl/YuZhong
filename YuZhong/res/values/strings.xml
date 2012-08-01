@@ -14,8 +14,17 @@
     <string name="common_label_loading">正在加载,请稍候...</string>
     <!-- pull to refresh -->
     <string name="pull_to_refresh_pull_label">下拉刷新...</string>
-    <string name="pull_to_refresh_release_label">释放刷新...</string>
+    <string name="pull_to_refresh_release_label">松开即可刷新...</string>
     <string name="pull_to_refresh_refreshing_label">正在加载...</string>
     <string name="pull_to_refresh_tap_label">点击刷新...</string>
+    <string name="login_label_login">登录</string>
+    <string name="login_label_register">注册</string>
+    <string name="login_hint_password">密码</string>
+    <string name="login_hint_mobile">手机号</string>
+    <string name="process_user_hint_name">姓名</string>
+    <string name="process_user_hint_mobile">手机号</string>
+    <string name="process_user_hint_birthday">生日</string>
+    <string name="process_user_hint_password">密码</string>
+    <string name="process_user_hint_repassword">确认密码</string>
 
 </resources>
