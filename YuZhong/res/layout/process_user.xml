@@ -85,6 +85,7 @@
                 android:singleLine="true" />
 
             <RadioGroup
+                android:id="@+id/rg_process_user_gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -112,13 +113,13 @@
                     android:text="未知" />
             </RadioGroup>
 
-            <EditText
-                android:id="@+id/et_process_user_birthday"
+            <Button
+                android:id="@+id/btn_process_user_birthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:hint="@string/process_user_hint_birthday"
-                android:inputType="date"
-                android:singleLine="true" />
+                android:padding="5dp" />
 
             <EditText
                 android:id="@+id/et_process_user_password"

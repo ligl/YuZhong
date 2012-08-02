@@ -23,13 +23,15 @@ import cn.amose.yuzhong.util.Utils;
  * Creates json service
  */
 public abstract class HttpService {
+	public static final String REQUEST_METHOD_GET = "GET";
+	public static final String REQUEST_METHOD_POST = "POST";
 	private Context mContext;
 	protected String mErrorMessage;
 	protected String mRequestMethod;
 
 	public HttpService(Context context) {
 		mContext = context;
-		mRequestMethod = "GET";
+		mRequestMethod = REQUEST_METHOD_GET;
 	}
 
 	public Context getContext() {
@@ -60,25 +62,36 @@ public abstract class HttpService {
 		return sb.toString();
 	}
 
-	/**
-	 * Generates json holder
-	 * 
-	 * @param holder
-	 * @return
-	 */
 	protected String generateJSONHolderString(JSONObject holder) {
-		String result = "";
+		StringBuilder sbReqeustQueryString;
 		try {
 			if (holder == null) {
-				return result;
+				return "";
 			}
-			result = "json=" + URLEncoder.encode(holder.toString(), "utf-8");
+			sbReqeustQueryString = new StringBuilder();
+			Iterator<?> iterator = holder.keys();
+			String key;
+			String value;
+			while (iterator.hasNext()) {
+				try {
+					key = iterator.next().toString();
+					value = URLEncoder.encode(holder.get(key).toString(),
+							"utf-8");
+					sbReqeustQueryString.append(key).append("=").append(value)
+							.append("&");
+				} catch (JSONException e) {
+					if (Constant.DEBUG) {
+						e.printStackTrace();
+					}
+				}
+			}
+			return sbReqeustQueryString.toString();
 		} catch (UnsupportedEncodingException e) {
 			if (Constant.DEBUG) {
 				e.printStackTrace();
 			}
 		}
-		return result;
+		return "";
 	}
 
 	/**

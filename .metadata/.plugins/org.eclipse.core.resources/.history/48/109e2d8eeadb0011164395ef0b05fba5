@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/cn.amose.yuzhong"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ccc" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:onClick="onBackClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/common_button_back" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:onClick="onCommitClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/common_button_commit" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="@dimen/common_avatar_width"
+            android:layout_height="@dimen/common_avatar_height"
+            android:layout_gravity="center_horizontal" >
+
+            <cn.amose.yuzhong.widget.AsyncImageView
+                android:id="@+id/iv_process_user_avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="#f1000000"
+                android:scaleType="fitCenter"
+                app:defaultSrc="@drawable/ic_launcher" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:background="@null"
+                android:onClick="onAvatarChooserClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/common_button_commit" />
+        </FrameLayout>
+
+        <EditText
+            android:id="@+id/et_process_user_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_hint_mobile" />
+
+        <EditText
+            android:id="@+id/et_process_user_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_hint_password" />
+
+        <EditText
+            android:id="@+id/et_process_user_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_hint_password" />
+
+        <EditText
+            android:id="@+id/et_process_user_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_hint_password" />
+
+        <EditText
+            android:id="@+id/et_process_user_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_hint_password" />
+
+        <EditText
+            android:id="@+id/et_process_user_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_hint_password" />
+    </LinearLayout>
+
+</ScrollView>

@@ -26,5 +26,6 @@
     <string name="process_user_hint_birthday">生日</string>
     <string name="process_user_hint_password">密码</string>
     <string name="process_user_hint_repassword">确认密码</string>
+    <string name="process_user_toast_registerfailed">注册失败</string>
 
 </resources>

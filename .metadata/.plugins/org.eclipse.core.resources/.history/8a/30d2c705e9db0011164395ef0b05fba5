@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="common_activity_bg">#F1EEEE</color>
+    <color name="common_listitem_pressed">#F4EEEE</color>
+    <color name="common_listitem_normal">#00000000</color>
+    <color name="newsdetail_common_textcolor">#888888</color>
+
+</resources>

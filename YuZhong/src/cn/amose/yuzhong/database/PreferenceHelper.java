@@ -17,7 +17,7 @@ public final class PreferenceHelper {
 	private static final String PREFERENCES_ACCOUNT_ID = "account_id";
 	private static final String PREFERENCES_ACCOUNT_LOGIN_NAME = "account_loginname";
 	private static final String PREFERENCES_ACCOUNT_NICKNAME = "account_nickname";
-	private static final String PREFERENCES_ACCOUNT_AGE = "account_age";
+	private static final String PREFERENCES_ACCOUNT_BIRTHDAY = "account_age";
 	private static final String PREFERENCES_ACCOUNT_GENDER = "account_gender";
 	private static final String PREFERENCES_ACCOUNT_AVATAR = "account_avatarurl";
 	private static final String PREFERENCES_ACCOUNT_PASSWORD = "account_password";
@@ -45,7 +45,7 @@ public final class PreferenceHelper {
 
 	public static boolean updateDefaultAccount(User user) {
 		Editor editor = sSHARED_REFERENCES.edit();
-		editor.putInt(PREFERENCES_ACCOUNT_AGE, user.getAge());
+		editor.putLong(PREFERENCES_ACCOUNT_BIRTHDAY, user.getBirthday());
 		editor.putString(PREFERENCES_ACCOUNT_LOGIN_NAME, user.getMobile());
 		editor.putString(PREFERENCES_ACCOUNT_NICKNAME, user.getName());
 		editor.putInt(PREFERENCES_ACCOUNT_ID, user.getId());
@@ -63,7 +63,8 @@ public final class PreferenceHelper {
 	public static User getDefaultAccount() {
 		if (sUSER == null) {
 			sUSER = new User();
-			sUSER.setAge(sSHARED_REFERENCES.getInt(PREFERENCES_ACCOUNT_AGE, 0));
+			sUSER.setBirthday(sSHARED_REFERENCES.getLong(
+					PREFERENCES_ACCOUNT_BIRTHDAY, 0));
 			sUSER.setGender(sSHARED_REFERENCES.getInt(
 					PREFERENCES_ACCOUNT_GENDER, 0));
 			sUSER.setId(sSHARED_REFERENCES.getInt(PREFERENCES_ACCOUNT_ID, 0));

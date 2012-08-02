@@ -1,0 +1,116 @@
+package cn.amose.yuzhong.model;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class User implements Parcelable {
+	public static final String INTENT_ACTION_USER = "user";
+	private int mId;
+	private String mMobile;
+	private String mName;
+	private String mAvatarUrl;
+	private int mBirthday;
+	private int mGender;
+	private String mPassword;
+//			'status' => 0
+	public User() {
+	}
+
+	public int getId() {
+		return mId;
+	}
+
+	public void setId(int id) {
+		this.mId = id;
+	}
+
+	public String getMobile() {
+		return mMobile;
+	}
+
+	public String getName() {
+		return mName;
+	}
+
+	public String getAvatarUrl() {
+		return mAvatarUrl;
+	}
+
+	public int getBirthday() {
+		return mBirthday;
+	}
+
+	public int getGender() {
+		return mGender;
+	}
+
+	public void setMobile(String mobile) {
+		this.mMobile = mobile;
+	}
+
+	public void setName(String name) {
+		this.mName = name;
+	}
+
+	public void setAvatarUrl(String avatarUrl) {
+		this.mAvatarUrl = avatarUrl;
+	}
+
+	public void setBirthday(int birthday) {
+		this.mBirthday = birthday;
+	}
+
+	/**
+	 * male : 1, female : 0, -1:unkown
+	 * 
+	 * @param gender
+	 */
+	public void setGender(int gender) {
+		this.mGender = gender;
+	}
+
+	public String getPassword() {
+		return mPassword;
+	}
+
+	public void setPassword(String password) {
+		this.mPassword = password;
+	}
+
+	/** -----------parcelable-------- */
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(mId);
+		dest.writeString(mAvatarUrl);
+		dest.writeString(mMobile);
+		dest.writeString(mName);
+		dest.writeInt(mBirthday);
+		dest.writeInt(mGender);
+		dest.writeString(mPassword);
+	}
+
+	public User(Parcel in) {
+		mId = in.readInt();
+		mAvatarUrl = in.readString();
+		mMobile = in.readString();
+		mName = in.readString();
+		mBirthday = in.readInt();
+		mGender = in.readInt();
+		mPassword = in.readString();
+	}
+
+	public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
+		public User createFromParcel(Parcel in) {
+			return new User(in);
+		}
+
+		public User[] newArray(int size) {
+			return new User[size];
+		}
+	};
+}

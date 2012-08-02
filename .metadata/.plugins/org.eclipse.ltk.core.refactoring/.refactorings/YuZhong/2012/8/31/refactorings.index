@@ -1,0 +1,37 @@
+1343828992094	Copy compilation unit
+1343829037461	Copy file
+1343830095700	Copy compilation unit
+1343830325970	Copy file
+1343830708990	Rename field 'mLoginName'
+1343830715154	Rename field 'mNickname'
+1343830724821	Rename method 'getLoginName'
+1343830731388	Rename method 'getNickname'
+1343830744183	Rename method 'setLoginName'
+1343830750814	Rename local variable 'loginName'
+1343830756008	Rename method 'setNickname'
+1343830760475	Rename local variable 'nickname'
+1343830936082	Rename type 'Preferences'
+1343831005931	Copy compilation unit
+1343831264727	Copy compilation unit
+1343831474745	Rename type 'RegisterActivity'
+1343831555253	Copy file
+1343831563866	Rename resource 'processuser.xml'
+1343831579401	Delete element
+1343831659214	Rename type 'MainActivity'
+1343831695791	Copy file
+1343832388315	Rename resource 'common_actionbar_back.png'
+1343832396880	Rename resource 'common_actionbar_commit.png'
+1343919452064	Rename type 'GetGXZB'
+1343919564718	Rename field 'mChannelList'
+1343919589534	Rename type 'ChannelJSONConvert'
+1343919940141	Rename local variable 'mId'
+1343919948060	Rename local variable 'mMobile'
+1343919953616	Rename local variable 'mName'
+1343919958689	Rename local variable 'mAvatarUrl'
+1343919961805	Rename local variable 'mStatus'
+1343919966361	Rename local variable 'mPassword'
+1343919971423	Rename local variable 'mGender'
+1343919975493	Rename local variable 'mBirthday'
+1343920214107	Rename local variable 'videoList'
+1343920357236	Rename field 'PREFERENCES_ACCOUNT_AGE'
+1343921783961	Rename local variable 'avatarContentBinary'

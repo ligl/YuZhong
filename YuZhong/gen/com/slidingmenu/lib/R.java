@@ -172,13 +172,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pulltorefresh_up_arrow=0x7f020009;
     }
     public static final class id {
+        public static final int btn_process_user_birthday=0x7f040014;
         public static final int et_login_mobile=0x7f04000a;
         public static final int et_login_password=0x7f04000b;
-        public static final int et_process_user_birthday=0x7f040013;
         public static final int et_process_user_mobile=0x7f04000f;
         public static final int et_process_user_name=0x7f04000e;
-        public static final int et_process_user_password=0x7f040014;
-        public static final int et_process_user_repassword=0x7f040015;
+        public static final int et_process_user_password=0x7f040015;
+        public static final int et_process_user_repassword=0x7f040016;
         public static final int fullscreen=0x7f040001;
         public static final int hdpi=0x7f040004;
         public static final int iv_process_user_avatar=0x7f04000d;
@@ -188,17 +188,18 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int mdpi=0x7f040003;
         public static final int pullDownFromTop=0x7f040006;
         public static final int pullUpFromBottom=0x7f040007;
-        public static final int pull_to_refresh_image=0x7f040018;
-        public static final int pull_to_refresh_progress=0x7f040016;
-        public static final int pull_to_refresh_text=0x7f040017;
-        public static final int rbtn_process_user_gender_female=0x7f040011;
-        public static final int rbtn_process_user_gender_male=0x7f040010;
-        public static final int rbtn_process_user_gender_unkown=0x7f040012;
-        public static final int slidingmenulayout=0x7f04001a;
-        public static final int slidingmenumain=0x7f040019;
-        public static final int slidingmenurowicon=0x7f04001b;
-        public static final int slidingmenurowtitle=0x7f04001c;
-        public static final int sm_zbase=0x7f04001d;
+        public static final int pull_to_refresh_image=0x7f040019;
+        public static final int pull_to_refresh_progress=0x7f040017;
+        public static final int pull_to_refresh_text=0x7f040018;
+        public static final int rbtn_process_user_gender_female=0x7f040012;
+        public static final int rbtn_process_user_gender_male=0x7f040011;
+        public static final int rbtn_process_user_gender_unkown=0x7f040013;
+        public static final int rg_process_user_gender=0x7f040010;
+        public static final int slidingmenulayout=0x7f04001b;
+        public static final int slidingmenumain=0x7f04001a;
+        public static final int slidingmenurowicon=0x7f04001c;
+        public static final int slidingmenurowtitle=0x7f04001d;
+        public static final int sm_zbase=0x7f04001e;
         public static final int tv_listitem_section_secondarytitle=0x7f040009;
         public static final int tv_listitem_section_title=0x7f040008;
         public static final int xhdpi=0x7f040005;
@@ -244,6 +245,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int process_user_hint_name=0x7f070016;
         public static final int process_user_hint_password=0x7f070019;
         public static final int process_user_hint_repassword=0x7f07001a;
+        public static final int process_user_toast_registerfailed=0x7f07001b;
         /**  pull to refresh 
          */
         public static final int pull_to_refresh_pull_label=0x7f07000e;

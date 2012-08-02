@@ -9,9 +9,22 @@ public class User implements Parcelable {
 	private String mMobile;
 	private String mName;
 	private String mAvatarUrl;
-	private int mAge;
+	private long mBirthday;
 	private int mGender;
 	private String mPassword;
+	private int mStatus;
+
+	public User(int id, String mobile, String name, String avatarUrl,
+			long birthday, int gender, String password, int status) {
+		this.mId = id;
+		this.mMobile = mobile;
+		this.mName = name;
+		this.mAvatarUrl = avatarUrl;
+		this.mBirthday = birthday;
+		this.mGender = gender;
+		this.mPassword = password;
+		this.mStatus = status;
+	}
 
 	public User() {
 	}
@@ -36,8 +49,8 @@ public class User implements Parcelable {
 		return mAvatarUrl;
 	}
 
-	public int getAge() {
-		return mAge;
+	public long getBirthday() {
+		return mBirthday;
 	}
 
 	public int getGender() {
@@ -56,17 +69,12 @@ public class User implements Parcelable {
 		this.mAvatarUrl = avatarUrl;
 	}
 
-	/**
-	 * unit week
-	 * 
-	 * @param age
-	 */
-	public void setAge(int age) {
-		this.mAge = age;
+	public void setBirthday(long birthday) {
+		this.mBirthday = birthday;
 	}
 
 	/**
-	 * male : 1, female : 0
+	 * male : 1, female : 0, -1:unkown
 	 * 
 	 * @param gender
 	 */
@@ -82,6 +90,14 @@ public class User implements Parcelable {
 		this.mPassword = password;
 	}
 
+	public int getStatus() {
+		return mStatus;
+	}
+
+	public void setStatus(int status) {
+		this.mStatus = status;
+	}
+
 	/** -----------parcelable-------- */
 	@Override
 	public int describeContents() {
@@ -94,9 +110,10 @@ public class User implements Parcelable {
 		dest.writeString(mAvatarUrl);
 		dest.writeString(mMobile);
 		dest.writeString(mName);
-		dest.writeInt(mAge);
+		dest.writeLong(mBirthday);
 		dest.writeInt(mGender);
 		dest.writeString(mPassword);
+		dest.writeInt(mStatus);
 	}
 
 	public User(Parcel in) {
@@ -104,9 +121,10 @@ public class User implements Parcelable {
 		mAvatarUrl = in.readString();
 		mMobile = in.readString();
 		mName = in.readString();
-		mAge = in.readInt();
+		mBirthday = in.readLong();
 		mGender = in.readInt();
 		mPassword = in.readString();
+		mStatus = in.readInt();
 	}
 
 	public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {

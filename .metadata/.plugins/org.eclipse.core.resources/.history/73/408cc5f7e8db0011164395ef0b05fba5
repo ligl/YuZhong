@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="common_banner_height">180dp</dimen>
+    <dimen name="newsdetail_common_textsize">13sp</dimen>
+
+</resources>

@@ -1,0 +1,67 @@
+package cn.amose.yuzhong.http;
+
+import java.util.ArrayList;
+import java.util.prefs.Preferences;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.content.Context;
+import cn.amose.yuzhong.R;
+import cn.amose.yuzhong.model.User;
+import cn.amose.yuzhong.util.Constant;
+
+public class Register extends HttpService {
+	private static final String ACTION = "http://app.3xgd.com/gxzb.asp";
+	private Context mContext;
+	private User mChannelList;
+
+	public Register(Context context) {
+		super(context);
+		mContext = context;
+	}
+
+	@Override
+	protected void process(String result) {
+		try {
+			JSONObject jsonHolder = new JSONObject(result);
+			int jsonCode = jsonHolder.getInt(Constant.JSON_KEY_CODE);
+			if (jsonCode == Constant.JSON_CODE_OK) {
+				mErrorMessage = null;
+			} else if (jsonCode == Constant.JSON_CODE_ERROR) {
+				mErrorMessage = jsonHolder.getString(Constant.JSON_KEY_MSG);
+				return;
+			} else {
+				mErrorMessage = mContext.getString(R.string.common_toast_error);
+				return;
+			}
+			JSONArray jsonArray = jsonHolder
+					.optJSONArray(Constant.JSON_KEY_DATA);
+			if (jsonArray != null && jsonArray.length() > 0) {
+				mChannelList = null;
+			} else {
+				mChannelList = null;
+			}
+
+		} catch (JSONException e) {
+			// How, my gad!!
+			mErrorMessage = mContext
+					.getString(R.string.common_toast_jsonparseerror);
+			if (Constant.DEBUG) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> T getResult() {
+		return (T) mChannelList;
+	}
+
+	@Override
+	protected String getServiceUri() {
+		return ACTION;
+	}
+}
