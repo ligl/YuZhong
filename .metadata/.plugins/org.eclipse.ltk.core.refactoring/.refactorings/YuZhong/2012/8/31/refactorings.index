@@ -35,3 +35,4 @@
 1343920214107	Rename local variable 'videoList'
 1343920357236	Rename field 'PREFERENCES_ACCOUNT_AGE'
 1343921783961	Rename local variable 'avatarContentBinary'
+1344010916916	Rename method 'getPathAndSize'

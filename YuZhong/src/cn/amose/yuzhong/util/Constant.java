@@ -23,6 +23,10 @@ public final class Constant {
 	public static final String JSON_KEY_PAGE_NUMBER = "pagenumber";
 	public static final String JSON_KEY_PAGE_SIZE = "pagesize";
 
+	// request code
+	public static final int REQUEST_CODE_TAKEAPICTURE = 1;
+	public static final int REQUEST_CODE_SELECTFILE = 2;
+
 	// version update
 	public static final String JSON_KEY_UPDATER = "updater";
 	public static final String JSON_KEY_VERSIONNAME = "versionname";

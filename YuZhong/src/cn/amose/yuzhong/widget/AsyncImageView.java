@@ -482,4 +482,32 @@ public class AsyncImageView extends ImageView implements ImageRequestCallback {
 		}
 	}
 
+	public Bitmap getBitmap() {
+		return mBitmap;
+	}
+
+	public String getUrl() {
+		return mUrl;
+	}
+
+	/**
+	 * get image format
+	 * 
+	 * @return default (png)
+	 */
+	public Bitmap.CompressFormat getImageFormat() {
+		if (mUrl != null) {
+			int index = mUrl.lastIndexOf('.');
+			if (index != -1) {
+				String ext = mUrl.substring(index + 1);
+				if (ext.equalsIgnoreCase("png")) {
+					return Bitmap.CompressFormat.PNG;
+				} else if (ext.equalsIgnoreCase("jpg")
+						|| ext.equalsIgnoreCase("jpeg")) {
+					return Bitmap.CompressFormat.JPEG;
+				}
+			}
+		}
+		return Bitmap.CompressFormat.PNG;
+	}
 }

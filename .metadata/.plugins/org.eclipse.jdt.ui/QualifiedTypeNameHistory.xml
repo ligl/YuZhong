@@ -2,6 +2,17 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.MemberActivity"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.database.Preferences"/>
-<fullyQualifiedTypeName name="cn.amose.yuzhong.database.PreferenceHelper"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.RegisterActivity"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.model.User"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.R"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.convert.UserJSONConvert"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.http.Register"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.ProcessUserActivity"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.util.Constant"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.util.Md5Util"/>
+<fullyQualifiedTypeName name="android.widget.EditText"/>
+<fullyQualifiedTypeName name="android.widget.RadioGroup"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.database.PreferenceHelper"/>
 </qualifiedTypeNameHistroy>

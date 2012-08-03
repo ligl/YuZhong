@@ -3,21 +3,33 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="312" key="DIALOG_WIDTH"/>
 		<item value="136" key="DIALOG_Y_ORIGIN"/>
-		<item value="438" key="DIALOG_HEIGHT"/>
 		<item value="842" key="DIALOG_X_ORIGIN"/>
+		<item value="438" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
+		<item value="true" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="process_user" key="selection"/>
+		<item value=";" key="selection"/>
 		<list key="findhistory">
+			<item value=");"/>
+			<item value="&apos;,"/>
+			<item value="define(&apos;"/>
+			<item value="age"/>
+			<item value="Age"/>
+			<item value="Channel"/>
 			<item value="login"/>
 		</list>
 		<list key="replacehistory">
+			<item value=";"/>
+			<item value="="/>
+			<item value="public static final int "/>
+			<item value="birthday"/>
+			<item value="Birthday"/>
+			<item value="User"/>
 			<item value="process_user"/>
 		</list>
 	</section>

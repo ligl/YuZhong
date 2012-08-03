@@ -8,6 +8,10 @@
 package cn.amose.yuzhong;
 
 public final class R {
+    public static final class anim {
+        public static final int cycle=0x7f040000;
+        public static final int shake=0x7f040001;
+    }
     public static final class attr {
         /** <p>Must be one of the following constant values.</p>
 <table>
@@ -146,18 +150,18 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int viewBehind=0x7f010001;
     }
     public static final class color {
-        public static final int common_activity_bg=0x7f050001;
-        public static final int common_listitem_normal=0x7f050003;
-        public static final int common_listitem_pressed=0x7f050002;
-        public static final int holo_blue_bright=0x7f050000;
+        public static final int common_activity_bg=0x7f060001;
+        public static final int common_listitem_normal=0x7f060003;
+        public static final int common_listitem_pressed=0x7f060002;
+        public static final int holo_blue_bright=0x7f060000;
     }
     public static final class dimen {
-        public static final int common_avatar_height=0x7f060005;
-        public static final int common_avatar_width=0x7f060004;
-        public static final int menu_header_line=0x7f060002;
-        public static final int menu_header_padding_top=0x7f060001;
-        public static final int menu_icon_side=0x7f060003;
-        public static final int menu_item_padding=0x7f060000;
+        public static final int common_avatar_height=0x7f070005;
+        public static final int common_avatar_width=0x7f070004;
+        public static final int menu_header_line=0x7f070002;
+        public static final int menu_header_padding_top=0x7f070001;
+        public static final int menu_icon_side=0x7f070003;
+        public static final int menu_item_padding=0x7f070000;
     }
     public static final class drawable {
         public static final int common_button_back=0x7f020000;
@@ -172,37 +176,37 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pulltorefresh_up_arrow=0x7f020009;
     }
     public static final class id {
-        public static final int btn_process_user_birthday=0x7f040014;
-        public static final int et_login_mobile=0x7f04000a;
-        public static final int et_login_password=0x7f04000b;
-        public static final int et_process_user_mobile=0x7f04000f;
-        public static final int et_process_user_name=0x7f04000e;
-        public static final int et_process_user_password=0x7f040015;
-        public static final int et_process_user_repassword=0x7f040016;
-        public static final int fullscreen=0x7f040001;
-        public static final int hdpi=0x7f040004;
-        public static final int iv_process_user_avatar=0x7f04000d;
-        public static final int ldpi=0x7f040002;
-        public static final int lv_main=0x7f04000c;
-        public static final int margin=0x7f040000;
-        public static final int mdpi=0x7f040003;
-        public static final int pullDownFromTop=0x7f040006;
-        public static final int pullUpFromBottom=0x7f040007;
-        public static final int pull_to_refresh_image=0x7f040019;
-        public static final int pull_to_refresh_progress=0x7f040017;
-        public static final int pull_to_refresh_text=0x7f040018;
-        public static final int rbtn_process_user_gender_female=0x7f040012;
-        public static final int rbtn_process_user_gender_male=0x7f040011;
-        public static final int rbtn_process_user_gender_unkown=0x7f040013;
-        public static final int rg_process_user_gender=0x7f040010;
-        public static final int slidingmenulayout=0x7f04001b;
-        public static final int slidingmenumain=0x7f04001a;
-        public static final int slidingmenurowicon=0x7f04001c;
-        public static final int slidingmenurowtitle=0x7f04001d;
-        public static final int sm_zbase=0x7f04001e;
-        public static final int tv_listitem_section_secondarytitle=0x7f040009;
-        public static final int tv_listitem_section_title=0x7f040008;
-        public static final int xhdpi=0x7f040005;
+        public static final int btn_process_user_birthday=0x7f050014;
+        public static final int et_login_mobile=0x7f05000a;
+        public static final int et_login_password=0x7f05000b;
+        public static final int et_process_user_mobile=0x7f05000f;
+        public static final int et_process_user_name=0x7f05000e;
+        public static final int et_process_user_password=0x7f050015;
+        public static final int et_process_user_repassword=0x7f050016;
+        public static final int fullscreen=0x7f050001;
+        public static final int hdpi=0x7f050004;
+        public static final int iv_process_user_avatar=0x7f05000d;
+        public static final int ldpi=0x7f050002;
+        public static final int lv_main=0x7f05000c;
+        public static final int margin=0x7f050000;
+        public static final int mdpi=0x7f050003;
+        public static final int pullDownFromTop=0x7f050006;
+        public static final int pullUpFromBottom=0x7f050007;
+        public static final int pull_to_refresh_image=0x7f050019;
+        public static final int pull_to_refresh_progress=0x7f050017;
+        public static final int pull_to_refresh_text=0x7f050018;
+        public static final int rbtn_process_user_gender_female=0x7f050012;
+        public static final int rbtn_process_user_gender_male=0x7f050011;
+        public static final int rbtn_process_user_gender_unkown=0x7f050013;
+        public static final int rg_process_user_gender=0x7f050010;
+        public static final int slidingmenulayout=0x7f05001b;
+        public static final int slidingmenumain=0x7f05001a;
+        public static final int slidingmenurowicon=0x7f05001c;
+        public static final int slidingmenurowtitle=0x7f05001d;
+        public static final int sm_zbase=0x7f05001e;
+        public static final int tv_listitem_section_secondarytitle=0x7f050009;
+        public static final int tv_listitem_section_title=0x7f050008;
+        public static final int xhdpi=0x7f050005;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -223,39 +227,41 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int yzbase=0x7f03000f;
     }
     public static final class string {
-        public static final int app_name=0x7f070000;
-        public static final int common_label_loading=0x7f07000d;
-        public static final int common_toast_connectionfailed=0x7f070004;
-        public static final int common_toast_connectionnodata=0x7f070005;
-        public static final int common_toast_error=0x7f070008;
-        public static final int common_toast_jsonparseerror=0x7f070006;
-        public static final int common_toast_nodata=0x7f070007;
-        public static final int common_toast_sdcarderror=0x7f070009;
-        public static final int common_toast_sdcardspaceerror=0x7f07000a;
-        public static final int common_toast_unsupport=0x7f07000c;
-        public static final int common_toast_uploaderror=0x7f07000b;
-        public static final int hello_world=0x7f070001;
-        public static final int login_hint_mobile=0x7f070015;
-        public static final int login_hint_password=0x7f070014;
-        public static final int login_label_login=0x7f070012;
-        public static final int login_label_register=0x7f070013;
-        public static final int menu_settings=0x7f070002;
-        public static final int process_user_hint_birthday=0x7f070018;
-        public static final int process_user_hint_mobile=0x7f070017;
-        public static final int process_user_hint_name=0x7f070016;
-        public static final int process_user_hint_password=0x7f070019;
-        public static final int process_user_hint_repassword=0x7f07001a;
-        public static final int process_user_toast_registerfailed=0x7f07001b;
+        public static final int app_name=0x7f080000;
+        public static final int common_label_loading=0x7f08000e;
+        public static final int common_toast_connectionfailed=0x7f080004;
+        public static final int common_toast_connectionnodata=0x7f080005;
+        public static final int common_toast_error=0x7f080008;
+        public static final int common_toast_getimagefailed=0x7f08000c;
+        public static final int common_toast_jsonparseerror=0x7f080006;
+        public static final int common_toast_nodata=0x7f080007;
+        public static final int common_toast_sdcarderror=0x7f080009;
+        public static final int common_toast_sdcardspaceerror=0x7f08000a;
+        public static final int common_toast_unsupport=0x7f08000d;
+        public static final int common_toast_uploaderror=0x7f08000b;
+        public static final int hello_world=0x7f080001;
+        public static final int login_hint_mobile=0x7f080016;
+        public static final int login_hint_password=0x7f080015;
+        public static final int login_label_login=0x7f080013;
+        public static final int login_label_register=0x7f080014;
+        public static final int menu_settings=0x7f080002;
+        public static final int process_user_hint_birthday=0x7f080019;
+        public static final int process_user_hint_mobile=0x7f080018;
+        public static final int process_user_hint_name=0x7f080017;
+        public static final int process_user_hint_password=0x7f08001a;
+        public static final int process_user_hint_repassword=0x7f08001b;
+        public static final int process_user_toast_registerfailed=0x7f08001c;
+        public static final int processuser_toast_passworddiffer=0x7f08001d;
         /**  pull to refresh 
          */
-        public static final int pull_to_refresh_pull_label=0x7f07000e;
-        public static final int pull_to_refresh_refreshing_label=0x7f070010;
-        public static final int pull_to_refresh_release_label=0x7f07000f;
-        public static final int pull_to_refresh_tap_label=0x7f070011;
-        public static final int title_activity_main=0x7f070003;
+        public static final int pull_to_refresh_pull_label=0x7f08000f;
+        public static final int pull_to_refresh_refreshing_label=0x7f080011;
+        public static final int pull_to_refresh_release_label=0x7f080010;
+        public static final int pull_to_refresh_tap_label=0x7f080012;
+        public static final int title_activity_main=0x7f080003;
     }
     public static final class style {
-        public static final int AppTheme=0x7f080000;
+        public static final int AppTheme=0x7f090000;
     }
     public static final class styleable {
         /** Attributes that can be used with a AsyncImageView.

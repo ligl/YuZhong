@@ -1,4 +1,5 @@
-*Test/
-YuZhong/bin
-SlidingMenu/bin
-.metadata/
+*Test/*
+YuZhong/bin/*
+SlidingMenu/bin/*
+.*
+!.gitignore

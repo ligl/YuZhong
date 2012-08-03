@@ -118,6 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:onClick="onBirthdaySettingClick"
                 android:hint="@string/process_user_hint_birthday"
                 android:padding="5dp" />
 
