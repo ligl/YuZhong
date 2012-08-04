@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.slidingmenu.lib;
+package cn.amose.gestureimageview;
 
 public final class R {
     public static final class anim {

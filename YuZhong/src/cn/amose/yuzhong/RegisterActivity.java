@@ -7,11 +7,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -137,7 +139,22 @@ public class RegisterActivity extends Activity {
 							Toast.LENGTH_SHORT).show();
 
 				} else {
-					mAvatarIv.setImageURI(filePath);
+					Intent intent = new Intent(this, ImageCropActivity.class);
+					intent.setData(filePath);
+					startActivityForResult(intent,
+							Constant.REQUEST_CODE_IMAGECROP);
+				}
+			}
+			break;
+		case Constant.REQUEST_CODE_IMAGECROP:
+			if (resultCode == Activity.RESULT_OK) {
+				Bitmap bitmap = data
+						.getParcelableExtra(ImageCropActivity.INTENT_ACTION_CROPIMAGE);
+				if (bitmap == null) {
+					Toast.makeText(this, R.string.common_toast_getimagefailed,
+							Toast.LENGTH_SHORT).show();
+				} else {
+					mAvatarIv.setImageBitmap(bitmap);
 					mAvatarBitmapUpdated = true;
 				}
 			}
@@ -154,19 +171,6 @@ public class RegisterActivity extends Activity {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		bm.compress(format, 100, baos);
 		return baos.toByteArray();
-	}
-
-	public void onSelectFileClick(View v) {
-		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-		intent.setType("image/*");
-		startActivityForResult(intent, Constant.REQUEST_CODE_SELECTFILE);
-	}
-
-	public void onTakeaPhotoClick(View v) {
-		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		intent.putExtra(MediaStore.EXTRA_OUTPUT,
-				MediaStore.getMediaScannerUri()); // output,Uri.parse("content://mms/scrapSpace");
-		startActivityForResult(intent, Constant.REQUEST_CODE_TAKEAPICTURE);
 	}
 
 	public void onBirthdaySettingClick(View v) {
@@ -213,9 +217,38 @@ public class RegisterActivity extends Activity {
 	}
 
 	public void onAvatarChooserClick(View v) {
-		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-		intent.setType("image/*");
-		startActivityForResult(intent, Constant.REQUEST_CODE_SELECTFILE);
+		final AlertDialog alertDialog = new AlertDialog.Builder(this)
+				.setTitle("设置头像")
+				.setItems(new String[] { "选择本地图片", "拍照" },
+						new OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface arg0, int which) {
+								if (which == 1) {
+									Intent intent = new Intent(
+											MediaStore.ACTION_IMAGE_CAPTURE);
+									intent.putExtra(MediaStore.EXTRA_OUTPUT,
+											MediaStore.getMediaScannerUri()); // output,Uri.parse("content://mms/scrapSpace");
+									startActivityForResult(intent,
+											Constant.REQUEST_CODE_TAKEAPICTURE);
+
+								} else {
+									Intent intent = new Intent(
+											Intent.ACTION_GET_CONTENT);
+									intent.setType("image/*");
+									startActivityForResult(intent,
+											Constant.REQUEST_CODE_SELECTFILE);
+								}
+
+							}
+						}).setNegativeButton("取消", new OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				}).create();
+		alertDialog.show();
 	}
 
 	private void register(String mobile, String name, String password,
