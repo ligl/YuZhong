@@ -20,7 +20,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:background="@null"
                 android:onClick="onBackClick"
                 android:scaleType="fitCenter"
                 android:src="@drawable/common_button_back" />
@@ -30,7 +29,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@null"
                 android:onClick="onCommitClick"
                 android:scaleType="fitCenter"
                 android:src="@drawable/common_button_commit" />
@@ -55,7 +53,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
-                android:background="@null"
                 android:onClick="onAvatarChooserClick"
                 android:scaleType="fitCenter"
                 android:src="@drawable/common_button_commit" />
@@ -88,6 +85,7 @@
                 android:id="@+id/rg_process_user_gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checkedButton="@+id/rbtn_process_user_gender_unkown"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal" >
 
@@ -95,21 +93,18 @@
                     android:id="@+id/rbtn_process_user_gender_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@null"
                     android:text="男" />
 
                 <RadioButton
                     android:id="@+id/rbtn_process_user_gender_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@null"
                     android:text="女" />
 
                 <RadioButton
                     android:id="@+id/rbtn_process_user_gender_unkown"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@null"
                     android:text="未知" />
             </RadioGroup>
 
@@ -118,8 +113,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:onClick="onBirthdaySettingClick"
                 android:hint="@string/process_user_hint_birthday"
+                android:onClick="onBirthdaySettingClick"
                 android:padding="5dp" />
 
             <EditText

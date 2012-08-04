@@ -9,9 +9,10 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
-import android.content.Context;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.PixelFormat;
@@ -20,6 +21,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -32,11 +34,12 @@ import cn.amose.yuzhong.asynctask.GetAsyncTask.OnDownloadListener;
 import cn.amose.yuzhong.database.PreferenceHelper;
 import cn.amose.yuzhong.http.Register;
 import cn.amose.yuzhong.model.User;
+import cn.amose.yuzhong.util.AppUtils;
 import cn.amose.yuzhong.util.Constant;
 import cn.amose.yuzhong.util.Md5Util;
 import cn.amose.yuzhong.widget.AsyncImageView;
 
-public class ProcessUserActivity extends Activity {
+public class RegisterActivity extends Activity {
 	private GetAsyncTask mGetAsyncTask;
 	private EditText mMobileEt;
 	private EditText mNameEt;
@@ -48,11 +51,13 @@ public class ProcessUserActivity extends Activity {
 	private DatePickerDialog mBirthdayDatePickerDialog;
 	private Calendar mBirthdayDate;
 	private boolean mAvatarBitmapUpdated;
+	private ProgressDialog mProgressDialog;
+	private User mUser;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.process_user);
+		setContentView(R.layout.register);
 		mMobileEt = (EditText) findViewById(R.id.et_process_user_mobile);
 		mAvatarIv = (AsyncImageView) findViewById(R.id.iv_process_user_avatar);
 		mNameEt = (EditText) findViewById(R.id.et_process_user_name);
@@ -60,7 +65,6 @@ public class ProcessUserActivity extends Activity {
 		mRepasswordEt = (EditText) findViewById(R.id.et_process_user_repassword);
 		mBirthdayBtn = (Button) findViewById(R.id.btn_process_user_birthday);
 		mGenderRg = (RadioGroup) findViewById(R.id.rg_process_user_gender);
-
 	}
 
 	public void onCommitClick(View v) {
@@ -68,13 +72,13 @@ public class ProcessUserActivity extends Activity {
 		String name = mNameEt.getText().toString().trim();
 		String password = mPasswordEt.getText().toString().trim();
 		String repassword = mRepasswordEt.getText().toString().trim();
-		if (mobile.equals("")) {
-			mMobileEt.requestFocus();
-			mMobileEt.startAnimation(AnimationUtils.loadAnimation(this,
-					R.anim.shake));
-		} else if (name.equals("")) {
+		if (name.equals("")) {
 			mNameEt.requestFocus();
 			mNameEt.startAnimation(AnimationUtils.loadAnimation(this,
+					R.anim.shake));
+		} else if (mobile.equals("")) {
+			mMobileEt.requestFocus();
+			mMobileEt.startAnimation(AnimationUtils.loadAnimation(this,
 					R.anim.shake));
 		} else if (password.equals("")) {
 			mPasswordEt.requestFocus();
@@ -103,14 +107,16 @@ public class ProcessUserActivity extends Activity {
 				gender = -1;
 				break;
 			}
-			byte[] avatarContent = null;
+			String avatarContent = null;
 			if (mAvatarBitmapUpdated) {
 				Bitmap bitmap = mAvatarIv.getBitmap();
-				//TODO 修改AsyncImageView 可以加载本地文件系统图片setUrl
+				// TODO 修改AsyncImageView 可以加载本地文件系统图片setUrl
 				if (bitmap == null) {
 					bitmap = drawableToBitmap(mAvatarIv.getDrawable());
 				}
-				avatarContent = bitmap2Bytes(bitmap, mAvatarIv.getImageFormat());
+				avatarContent = Base64.encodeToString(
+						bitmap2Bytes(bitmap, mAvatarIv.getImageFormat()),
+						Base64.DEFAULT);
 			}
 			register(mobile, name, password, birthday, gender, avatarContent);
 		}
@@ -150,29 +156,6 @@ public class ProcessUserActivity extends Activity {
 		return baos.toByteArray();
 	}
 
-	private String getPath(Context context, Uri uri) {
-		if ("content".equalsIgnoreCase(uri.getScheme())) {
-			String[] projection = { "_data" };
-			Cursor cursor = null;
-
-			try {
-				cursor = context.getContentResolver().query(uri, projection,
-						null, null, null);
-				int column_index_data = cursor.getColumnIndexOrThrow("_data");
-				if (cursor.moveToFirst()) {
-					return cursor.getString(column_index_data);
-				}
-			} catch (Exception e) {
-				// Eat it
-			}
-		} else if ("file".equalsIgnoreCase(uri.getScheme())) {
-			// TODO get file size
-			return uri.getPath();
-		}
-
-		return null;
-	}
-
 	public void onSelectFileClick(View v) {
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
 		intent.setType("image/*");
@@ -197,7 +180,8 @@ public class ProcessUserActivity extends Activity {
 						public void onDateSet(DatePicker arg0, int year,
 								int monthOfYear, int dayOfMonth) {
 							mBirthdayDate.set(year, monthOfYear, dayOfMonth);
-							mBirthdayBtn.setText(mBirthdayDate.toString());
+							mBirthdayBtn.setText(String.format("%d-%d-%d",
+									year, monthOfYear, dayOfMonth));
 						}
 					}, mBirthdayDate.get(Calendar.YEAR),
 					mBirthdayDate.get(Calendar.MONTH),
@@ -235,7 +219,20 @@ public class ProcessUserActivity extends Activity {
 	}
 
 	private void register(String mobile, String name, String password,
-			long birthday, int gender, byte[] avatar) {
+			long birthday, int gender, String avatar) {
+		if (mProgressDialog == null) {
+			mProgressDialog = new ProgressDialog(this);
+			mProgressDialog.setTitle(R.string.common_dg_title_info);
+			mProgressDialog
+					.setMessage(getString(R.string.common_dg_msg_operation));
+			mProgressDialog.setOnCancelListener(new OnCancelListener() {
+
+				@Override
+				public void onCancel(DialogInterface arg0) {
+					cancelAsyncTaskIfNeed();
+				}
+			});
+		}
 		JSONObject jsonObject = new JSONObject();
 		try {
 			jsonObject.put("mobile", mobile);
@@ -250,18 +247,26 @@ public class ProcessUserActivity extends Activity {
 
 				@Override
 				public <T> void onDownloadComplete(T result, String errorMessage) {
+					if (mProgressDialog.isShowing()) {
+						mProgressDialog.dismiss();
+					}
 					if (errorMessage == null) {
 						PreferenceHelper.initDefaultAccount((User) result);
-						Toast.makeText(ProcessUserActivity.this,
+						Toast.makeText(RegisterActivity.this,
 								((User) result).getName(), Toast.LENGTH_SHORT)
 								.show();
+						PreferenceHelper.initDefaultAccount((User) result);
+						AppUtils.startMainActivity(RegisterActivity.this);
+						finish();
+
 					} else {
-						Toast.makeText(ProcessUserActivity.this, errorMessage,
+						Toast.makeText(RegisterActivity.this, errorMessage,
 								Toast.LENGTH_SHORT).show();
 					}
 				}
 			});
 			mGetAsyncTask.execute();
+			mProgressDialog.show();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

@@ -36,7 +36,10 @@
             android:name=".BulletinActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ProcessUserActivity"
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UpdateUserProfileActivity"
             android:screenOrientation="portrait" />
     </application>
 

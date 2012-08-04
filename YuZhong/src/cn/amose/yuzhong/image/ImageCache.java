@@ -28,7 +28,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import cn.amose.yuzhong.YZApplication.OnLowMemoryListener;
 import cn.amose.yuzhong.util.Constant;
-import cn.amose.yuzhong.util.APPUtils;
+import cn.amose.yuzhong.util.AppUtils;
 import cn.amose.yuzhong.util.Md5Util;
 
 public class ImageCache implements OnLowMemoryListener {
@@ -48,11 +48,11 @@ public class ImageCache implements OnLowMemoryListener {
 	public ImageCache(Context context) {
 		mCacheFolder = context.getCacheDir();
 		mSoftCache = new HashMap<String, SoftReference<Bitmap>>();
-		APPUtils.getYZApplication(context).registerOnLowMemoryListener(this);
+		AppUtils.getYZApplication(context).registerOnLowMemoryListener(this);
 	}
 
 	public static ImageCache from(Context context) {
-		return APPUtils.getImageCache(context);
+		return AppUtils.getImageCache(context);
 	}
 
 	public Bitmap get(String url) {

@@ -36,3 +36,11 @@
 1343920357236	Rename field 'PREFERENCES_ACCOUNT_AGE'
 1343921783961	Rename local variable 'avatarContentBinary'
 1344010916916	Rename method 'getPathAndSize'
+1344060131522	Rename type 'APPUtils'
+1344060426848	Copy compilation unit
+1344063805085	Copy compilation unit
+1344063865078	Rename type 'UpdateUserActivity'
+1344063874609	Rename type 'ProcessUserActivity'
+1344063988826	Rename resource 'process_user.xml'
+1344064008199	Copy file
+1344097075010	Rename method 'register'

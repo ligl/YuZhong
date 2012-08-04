@@ -17,7 +17,10 @@ package cn.amose.yuzhong.util;
 
 import java.util.concurrent.ExecutorService;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import cn.amose.yuzhong.BulletinActivity;
 import cn.amose.yuzhong.YZApplication;
 import cn.amose.yuzhong.image.ImageCache;
 
@@ -26,9 +29,9 @@ import cn.amose.yuzhong.image.ImageCache;
  * 
  * @author Cyril Mottier
  */
-public class APPUtils {
+public class AppUtils {
 
-	private APPUtils() {
+	private AppUtils() {
 	}
 
 	/**
@@ -64,4 +67,7 @@ public class APPUtils {
 		return getYZApplication(context).getExecutor();
 	}
 
+	public static void startMainActivity(Activity activity) {
+		activity.startActivity(new Intent(activity, BulletinActivity.class));
+	}
 }

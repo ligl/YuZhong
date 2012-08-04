@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
 import cn.amose.yuzhong.database.PreferenceHelper;
+import cn.amose.yuzhong.util.AppUtils;
 
 public class SplashActivity extends Activity {
 	private static final long DELAY_MILLIS = 1 * 1000;
@@ -16,16 +17,14 @@ public class SplashActivity extends Activity {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
-			//TODO test
-			startActivity(new Intent(SplashActivity.this,
-					LoginActivity.class));
-			// if (PreferenceHelper.getAccountId() == 0) {
-			// startActivity(new Intent(SplashActivity.this,
-			// LoginActivity.class));
-			// } else {
-			// startActivity(new Intent(SplashActivity.this,
-			// BulletinActivity.class));
-			// }
+			// TODO test
+			startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+			if (PreferenceHelper.getAccountId() == 0) {
+				startActivity(new Intent(SplashActivity.this,
+						LoginActivity.class));
+			} else {
+				AppUtils.startMainActivity(SplashActivity.this);
+			}
 			finish();
 		}
 

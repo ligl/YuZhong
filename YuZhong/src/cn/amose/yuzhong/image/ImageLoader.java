@@ -28,7 +28,7 @@ import android.os.Process;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import cn.amose.yuzhong.util.APPUtils;
+import cn.amose.yuzhong.util.AppUtils;
 
 /**
  * An ImageLoader asynchronously loads image from a given url. Client may be
@@ -65,10 +65,10 @@ public class ImageLoader {
 
 	public ImageLoader(Context context) {
 		if (sImageCache == null) {
-			sImageCache = APPUtils.getImageCache(context);
+			sImageCache = AppUtils.getImageCache(context);
 		}
 		if (sExecutor == null) {
-			sExecutor = APPUtils.getExecutor(context);
+			sExecutor = AppUtils.getExecutor(context);
 		}
 		if (sDefaultOptions == null) {
 			sDefaultOptions = new BitmapFactory.Options();

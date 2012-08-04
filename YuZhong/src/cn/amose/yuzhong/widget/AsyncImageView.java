@@ -33,7 +33,7 @@ import cn.amose.yuzhong.image.Config;
 import cn.amose.yuzhong.image.ImageProcessor;
 import cn.amose.yuzhong.image.ImageRequest;
 import cn.amose.yuzhong.image.ImageRequest.ImageRequestCallback;
-import cn.amose.yuzhong.util.APPUtils;
+import cn.amose.yuzhong.util.AppUtils;
 
 /**
  * <p>
@@ -238,7 +238,7 @@ public class AsyncImageView extends ImageView implements ImageRequestCallback {
 			// TODO cyril: This is a synchronous call ... make it asynchronous
 			mBitmap = null;
 			if (!force) {
-				mBitmap = APPUtils.getImageCache(getContext()).get(mUrl);
+				mBitmap = AppUtils.getImageCache(getContext()).get(mUrl);
 			}
 
 			if (mBitmap != null) {
@@ -320,7 +320,7 @@ public class AsyncImageView extends ImageView implements ImageRequestCallback {
 			} else {
 				// We're paused: let's look in a synchronous and efficient cache
 				// prior using the default image.
-				mBitmap = APPUtils.getImageCache(getContext()).get(mUrl);
+				mBitmap = AppUtils.getImageCache(getContext()).get(mUrl);
 				if (mBitmap != null) {
 					setBitmapFromCache();
 					return;

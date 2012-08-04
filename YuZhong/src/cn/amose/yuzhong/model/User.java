@@ -5,6 +5,14 @@ import android.os.Parcelable;
 
 public class User implements Parcelable {
 	public static final String INTENT_ACTION_USER = "user";
+	public static final int USER_STATUS_WATINGAUDIT = 0;
+	public static final int USER_STATUS_NORMAL = 1;
+	public static final int USER_STATUS_FREEZE = -1;
+	public static final int USER_STATUS_UNAUDIT = 2;
+	public static final int USER_GENDER_MALE = 0;
+	public static final int USER_GENDER_FEMALE = 1;
+	public static final int USER_GENDER_UNKOWN = -1;
+
 	private int mId;
 	private String mMobile;
 	private String mName;
