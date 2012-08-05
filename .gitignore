@@ -1,5 +1,2 @@
-*Test/*
-YuZhong/bin/*
-SlidingMenu/bin/*
-.*
-!.gitignore
+GestureImageView/bin SlidingMenu/bin StickyListHeadersListView/bin YuZhong/bin
+. .. .git .gitignore .metadata

@@ -1,0 +1,26 @@
+package cn.amose.yuzhong;
+
+import android.app.Activity;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.KeyEvent;
+
+public class ImageCropActivity extends Activity {
+	public static final String INTENT_ACTION_CROPIMAGE = "cn.amose.yuzhong.cropimage";
+
+	private Uri mUri;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.splash);
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+			mHandler.removeMessages(MSG_WHAT_STARTUP);
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+}

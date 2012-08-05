@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/cn.amose.yuzhong"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ccc" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:onClick="onBackClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/common_button_back" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:onClick="onCommitClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/common_button_commit" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="@dimen/common_avatar_width"
+            android:layout_height="@dimen/common_avatar_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp" >
+
+            <cn.amose.yuzhong.widget.AsyncImageView
+                android:id="@+id/iv_update_user_profile_avatar"
+                android:layout_width="@dimen/common_avatar_width"
+                android:layout_height="@dimen/common_avatar_height"
+                android:layout_gravity="center_horizontal"
+                android:background="#f1000000"
+                android:scaleType="fitCenter"
+                app:defaultSrc="@drawable/ic_launcher" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:onClick="onAvatarChooserClick"
+                android:scaleType="fitCenter"
+                android:src="@drawable/common_button_commit" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/et_update_user_profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/process_user_hint_name"
+                android:inputType="textPersonName"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/et_update_user_profile_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RadioGroup
+                android:id="@+id/rg_update_user_profile_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/rbtn_update_user_profile_gender_unkown"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rbtn_update_user_profile_gender_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="男" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_update_user_profile_gender_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="女" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_update_user_profile_gender_unkown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="未知" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btn_update_user_profile_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/process_user_hint_birthday"
+                android:onClick="onBirthdaySettingClick"
+                android:padding="5dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
