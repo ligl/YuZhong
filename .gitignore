@@ -1,2 +1,5 @@
-GestureImageView/bin SlidingMenu/bin StickyListHeadersListView/bin YuZhong/bin
-. .. .git .gitignore .metadata
+GestureImageView/bin 
+SlidingMenu/bin 
+StickyListHeadersListView/bin 
+YuZhong/bin
+.*
