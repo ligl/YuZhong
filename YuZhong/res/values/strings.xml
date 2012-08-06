@@ -34,5 +34,12 @@
     <string name="process_user_toast_registerfailed">注册失败</string>
     <string name="processuser_toast_passworddiffer">两次密码不同，请重新输入</string>
     <string name="processuser_toast_updateprofilesuccess">更新成功</string>
+    <string name="main_label_segment_yuzhong">羽众</string>
+    <string name="main_label_segment_yuzhong_bulletin">公告</string>
+    <string name="main_label_segment_yuzhong_activity">活动</string>
+    <string name="main_label_segment_yuzhong_member">成员</string>
+    <string name="main_label_segment_account">账户</string>
+    <string name="main_label_segment_account_settings">设置</string>
+    <string name="main_label_segment_account_exit">退出</string>
 
 </resources>

@@ -2,3 +2,11 @@
 1344182089612	Delete element
 1344182097689	Delete element
 1344182112641	Delete element
+1344262723035	Rename resource 'test_list_item_layout.xml'
+1344262737560	Copy file
+1344262799229	Rename local variable 'header'
+1344262874412	Rename resource 'header.xml'
+1344262884180	Rename resource 'listitem_main.xml'
+1344263443159	Delete element
+1344264009225	Rename field 'mSegmentHeader'
+1344264013593	Rename field 'mSegmentItem'

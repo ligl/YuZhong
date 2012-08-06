@@ -1,5 +1,7 @@
 package cn.amose.yuzhong;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ public abstract class YZBaseActivity extends Activity {
 	protected LayoutInflater mLayoutInflater;
 	private View mBehindView;
 	private View mAboveView;
+	private ArrayList<SegmentItem> mSegmentItemList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,10 @@ public abstract class YZBaseActivity extends Activity {
 		mSlidingMenu.setViewBehind(mBehindView);
 		StickyListHeadersListView lvMain = (StickyListHeadersListView) mBehindView
 				.findViewById(R.id.lv_main);
-
+		View headerView = mLayoutInflater.inflate(
+				R.layout.listitem_main_header, null);
+		lvMain.addHeaderView(headerView);
+		lvMain.setHeaderDividersEnabled(false);
 		lvMain.setAdapter(new TestBaseAdapter(this));
 		lvMain.setOnItemClickListener(new OnItemClickListener() {
 
@@ -64,22 +70,36 @@ public abstract class YZBaseActivity extends Activity {
 
 	private class TestBaseAdapter extends StickyListHeadersBaseAdapter {
 
-		private String[] countries;
-		private LayoutInflater inflater;
-
 		public TestBaseAdapter(Context context) {
 			super(context);
-			inflater = LayoutInflater.from(context);
-			countries = context.getResources()
-					.getStringArray(R.array.countries);
+			mSegmentItemList = new ArrayList<YZBaseActivity.SegmentItem>();
+			String segmentYuZhong = getString(R.string.main_label_segment_yuzhong);
+			int yuZhongGroupId = R.string.main_label_segment_yuzhong;
+			mSegmentItemList.add(new SegmentItem(yuZhongGroupId,
+					segmentYuZhong,
+					getString(R.string.main_label_segment_yuzhong_bulletin)));
+			mSegmentItemList.add(new SegmentItem(yuZhongGroupId,
+					segmentYuZhong,
+					getString(R.string.main_label_segment_yuzhong_activity)));
+			mSegmentItemList.add(new SegmentItem(yuZhongGroupId,
+					segmentYuZhong,
+					getString(R.string.main_label_segment_yuzhong_member)));
+			String segmentAccount = getString(R.string.main_label_segment_account);
+			int accountGroupId = R.string.main_label_segment_account;
+			mSegmentItemList.add(new SegmentItem(accountGroupId,
+					segmentAccount,
+					getString(R.string.main_label_segment_account_settings)));
+			mSegmentItemList.add(new SegmentItem(accountGroupId,
+					segmentAccount,
+					getString(R.string.main_label_segment_account_exit)));
 		}
 
 		public int getCount() {
-			return countries.length;
+			return mSegmentItemList.size();
 		}
 
 		public Object getItem(int position) {
-			return countries[position];
+			return mSegmentItemList.get(position);
 		}
 
 		public long getItemId(int position) {
@@ -94,7 +114,7 @@ public abstract class YZBaseActivity extends Activity {
 			// return the first character of the country as ID because this is
 			// what
 			// headers are based upon
-			return countries[position].subSequence(0, 1).charAt(0);
+			return mSegmentItemList.get(position).mGroupId;
 		}
 
 		// works in the same way as getview()
@@ -104,7 +124,8 @@ public abstract class YZBaseActivity extends Activity {
 
 			if (convertView == null) {
 				holder = new HeaderViewHolder();
-				convertView = inflater.inflate(R.layout.header, null);
+				convertView = mLayoutInflater.inflate(
+						R.layout.listitem_main_segment_header, null);
 				holder.text = (TextView) convertView.findViewById(R.id.text);
 				convertView.setTag(holder);
 			} else {
@@ -112,7 +133,7 @@ public abstract class YZBaseActivity extends Activity {
 			}
 
 			// set header text as first char in name
-			holder.text.setText(countries[position].subSequence(0, 1));
+			holder.text.setText(mSegmentItemList.get(position).mHeader);
 
 			return convertView;
 		}
@@ -130,15 +151,15 @@ public abstract class YZBaseActivity extends Activity {
 
 			if (convertView == null) {
 				holder = new ViewHolder();
-				convertView = inflater.inflate(R.layout.test_list_item_layout,
-						null);
+				convertView = mLayoutInflater.inflate(
+						R.layout.listitem_main_segment_item, null);
 				holder.text = (TextView) convertView.findViewById(R.id.text);
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 
-			holder.text.setText(countries[position]);
+			holder.text.setText(mSegmentItemList.get(position).mItem);
 
 			return convertView;
 		}
@@ -149,4 +170,15 @@ public abstract class YZBaseActivity extends Activity {
 
 	}
 
+	class SegmentItem {
+		SegmentItem(int groupId, String header, String item) {
+			mGroupId = groupId;
+			mHeader = header;
+			mItem = item;
+		}
+
+		int mGroupId;
+		String mHeader;
+		String mItem;
+	}
 }
