@@ -38,6 +38,8 @@
     <string name="main_label_segment_yuzhong_bulletin">公告</string>
     <string name="main_label_segment_yuzhong_activity">活动</string>
     <string name="main_label_segment_yuzhong_member">成员</string>
+    <string name="main_label_segment_yuzhong_checkin">签到</string>
+    <string name="main_label_segment_yuzhong_fund">经费</string>
     <string name="main_label_segment_account">账户</string>
     <string name="main_label_segment_account_settings">设置</string>
     <string name="main_label_segment_account_exit">退出</string>

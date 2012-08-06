@@ -84,6 +84,12 @@ public abstract class YZBaseActivity extends Activity {
 			mSegmentItemList.add(new SegmentItem(yuZhongGroupId,
 					segmentYuZhong,
 					getString(R.string.main_label_segment_yuzhong_member)));
+			mSegmentItemList.add(new SegmentItem(yuZhongGroupId,
+					segmentYuZhong,
+					getString(R.string.main_label_segment_yuzhong_checkin)));
+			mSegmentItemList.add(new SegmentItem(yuZhongGroupId,
+					segmentYuZhong,
+					getString(R.string.main_label_segment_yuzhong_fund)));
 			String segmentAccount = getString(R.string.main_label_segment_account);
 			int accountGroupId = R.string.main_label_segment_account;
 			mSegmentItemList.add(new SegmentItem(accountGroupId,

@@ -277,12 +277,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int login_label_login=0x7f080015;
         public static final int login_label_register=0x7f080016;
         public static final int login_toast_namepassworderror=0x7f08001a;
-        public static final int main_label_segment_account=0x7f080027;
-        public static final int main_label_segment_account_exit=0x7f080029;
-        public static final int main_label_segment_account_settings=0x7f080028;
+        public static final int main_label_segment_account=0x7f080029;
+        public static final int main_label_segment_account_exit=0x7f08002b;
+        public static final int main_label_segment_account_settings=0x7f08002a;
         public static final int main_label_segment_yuzhong=0x7f080023;
         public static final int main_label_segment_yuzhong_activity=0x7f080025;
         public static final int main_label_segment_yuzhong_bulletin=0x7f080024;
+        public static final int main_label_segment_yuzhong_checkin=0x7f080027;
+        public static final int main_label_segment_yuzhong_fund=0x7f080028;
         public static final int main_label_segment_yuzhong_member=0x7f080026;
         public static final int menu_settings=0x7f080002;
         public static final int process_user_hint_birthday=0x7f08001d;
