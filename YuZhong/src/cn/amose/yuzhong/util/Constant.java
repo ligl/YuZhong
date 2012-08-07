@@ -21,6 +21,8 @@ public final class Constant {
 
 	public static final String JSON_KEY_PAGE_NUMBER = "pagenumber";
 	public static final String JSON_KEY_PAGE_SIZE = "pagesize";
+	public static final String JSON_KEY_UID = "uid";
+	public static final String JSON_KEY_TYPE = "type";
 
 	// request code
 	public static final int REQUEST_CODE_TAKEAPICTURE = 1;

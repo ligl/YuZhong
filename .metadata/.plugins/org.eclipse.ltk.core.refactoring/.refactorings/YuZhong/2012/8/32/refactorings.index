@@ -10,3 +10,28 @@
 1344263443159	Delete element
 1344264009225	Rename field 'mSegmentHeader'
 1344264013593	Rename field 'mSegmentItem'
+1344350519466	Copy compilation unit
+1344350551202	Rename type 'GetBulletin'
+1344350897312	Rename local variable 'mTime'
+1344350903332	Rename local variable 'mType'
+1344350908367	Rename local variable 'mContentJson'
+1344350913887	Rename local variable 'mTitle'
+1344350931051	Rename local variable 'mUMobile'
+1344350948661	Rename local variable 'mUName'
+1344350957713	Rename local variable 'mUId'
+1344350963240	Rename local variable 'mBId'
+1344351001018	Copy compilation unit
+1344351082616	Rename local variable 'mBId'
+1344351087656	Rename local variable 'ｂｉd'
+1344351093700	Rename local variable 'mUId'
+1344351098748	Rename local variable 'mUName'
+1344351105317	Rename local variable 'mUMobile'
+1344351109366	Rename local variable 'mTime'
+1344351113398	Rename local variable 'mType'
+1344351118938	Rename local variable 'mContentJson'
+1344351122974	Rename local variable 'mTitle'
+1344352472697	Rename method 'getBulletin'
+1344352959292	Copy file
+1344353458794	Rename field 'mContent'
+1344355467769	Rename local variable 'userList'
+1344355503420	Rename field 'mBulletin'

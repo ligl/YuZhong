@@ -17,7 +17,6 @@
 <fullyQualifiedTypeName name="android.app.DatePickerDialog.OnDateSetListener"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
-<fullyQualifiedTypeName name="cn.amose.yuzhong.R.id"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.widget.AsyncImageView"/>
 <fullyQualifiedTypeName name="android.graphics.drawable.BitmapDrawable"/>
 <fullyQualifiedTypeName name="android.graphics.Bitmap.CompressFormat"/>
@@ -34,7 +33,6 @@
 <fullyQualifiedTypeName name="android.content.DialogInterface.OnKeyListener"/>
 <fullyQualifiedTypeName name="android.view.View.OnKeyListener"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.database.PreferenceHelper"/>
-<fullyQualifiedTypeName name="cn.amose.yuzhong.R.string"/>
 <fullyQualifiedTypeName name="android.app.AlertDialog"/>
 <fullyQualifiedTypeName name="android.app.AlertDialog.Builder"/>
 <fullyQualifiedTypeName name="android.content.DialogInterface.OnClickListener"/>
@@ -44,4 +42,10 @@
 <fullyQualifiedTypeName name="cn.amose.yuzhong.ImageCropActivity"/>
 <fullyQualifiedTypeName name="com.emilsjolander.components.StickyListHeaders.StickyListHeadersListView"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.YZBaseActivity.TestBaseAdapter"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.R.layout"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.R.id"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.R.string"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.YZBaseActivity.SegmentItem"/>
 </qualifiedTypeNameHistroy>

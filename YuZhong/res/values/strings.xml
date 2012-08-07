@@ -16,10 +16,10 @@
     <string name="common_dg_title_info">提示</string>
     <string name="common_dg_msg_operation">正在处理，请稍后...</string>
     <!-- pull to refresh -->
-    <string name="pull_to_refresh_pull_label">下拉刷新...</string>
-    <string name="pull_to_refresh_release_label">松开即可刷新...</string>
+    <string name="pull_to_refresh_pull_label">下拉刷新</string>
+    <string name="pull_to_refresh_release_label">松开即可刷新</string>
     <string name="pull_to_refresh_refreshing_label">正在加载...</string>
-    <string name="pull_to_refresh_tap_label">点击刷新...</string>
+    <string name="pull_to_refresh_tap_label">点击刷新</string>
     <string name="login_label_login">登录</string>
     <string name="login_label_register">注册</string>
     <string name="login_hint_password">密码</string>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+<cn.amose.yuzhong.widget.PullToRefreshListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lv_bulletin"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:background="#88F10F"/>
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:cacheColorHint="#00000000" />
