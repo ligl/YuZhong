@@ -112,20 +112,23 @@ public abstract class HttpService {
 		HttpURLConnection connection = null;
 		if (Utils.checkNetwork(mContext)) {
 			try {
+				String paramsJsonString = generateJSONHolderString(jsonHolder);
+				if (mRequestMethod.equals(REQUEST_METHOD_GET)) {
+					httpAction += "?" + paramsJsonString;
+				}
 				URL url = new URL(httpAction);
 				connection = (HttpURLConnection) url.openConnection();
-				connection.setRequestMethod(mRequestMethod);
 				connection.setConnectTimeout(10000);
-				connection.setDoOutput(true);
-				connection.setDoInput(true);
 				connection.setUseCaches(false);
-
+				if (!mRequestMethod.equals(REQUEST_METHOD_GET)) {
+					connection.setRequestMethod(mRequestMethod);
+					connection.setDoInput(true);
+					connection.setDoOutput(true);
+					connection.getOutputStream().write(
+							paramsJsonString.getBytes());
+				}
 				connection.setRequestProperty("Content-Type",
 						"application/x-www-form-urlencoded");
-				String paramsJsonString = generateJSONHolderString(jsonHolder);
-
-				connection.getOutputStream().write(paramsJsonString.getBytes());
-
 			} catch (SocketTimeoutException e) {
 				if (Constant.DEBUG) {
 					e.printStackTrace();
