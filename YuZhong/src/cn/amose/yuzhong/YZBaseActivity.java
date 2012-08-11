@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.emilsjolander.components.StickyListHeaders.StickyListHeadersBaseAdapter;
 import com.emilsjolander.components.StickyListHeaders.StickyListHeadersListView;
@@ -44,10 +44,33 @@ public abstract class YZBaseActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
-				Toast.makeText(getApplicationContext(),
-						"click position: " + position, Toast.LENGTH_SHORT)
-						.show();
+				switch (position - 1) {
+				case 0:
+					if (mAboveView.getId() == R.id.lv_bulletin) {
+						mSlidingMenu.showAbove();
+					} else {
+						startActivity(new Intent(YZBaseActivity.this,
+								BulletinActivity.class));
+					}
+					break;
+				case 1:
+					if (mAboveView.getId() == R.id.lv_activity) {
+						mSlidingMenu.showAbove();
+					} else {
+						startActivity(new Intent(YZBaseActivity.this,
+								ActivityActivity.class));
+					}
+					break;
+				case 2:
+					if (mAboveView.getId() == R.id.lv_member) {
+						mSlidingMenu.showAbove();
+					} else {
+						startActivity(new Intent(YZBaseActivity.this,
+								MemberActivity.class));
+					}
+					break;
 
+				}
 			}
 
 		});

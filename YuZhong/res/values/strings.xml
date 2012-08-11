@@ -43,5 +43,7 @@
     <string name="main_label_segment_account">账户</string>
     <string name="main_label_segment_account_settings">设置</string>
     <string name="main_label_segment_account_exit">退出</string>
-
+	<string name="activity_label_join">我参加</string>
+	<string name="activity_label_nointerest">不感兴趣</string>
+	<string name="activity_label_memeber">看看都有谁</string>
 </resources>

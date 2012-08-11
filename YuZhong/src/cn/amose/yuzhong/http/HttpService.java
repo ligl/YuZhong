@@ -25,7 +25,7 @@ import cn.amose.yuzhong.util.Utils;
 public abstract class HttpService {
 	public static final String REQUEST_METHOD_GET = "GET";
 	public static final String REQUEST_METHOD_POST = "POST";
-	private Context mContext;
+	protected Context mContext;
 	protected String mErrorMessage;
 	protected String mRequestMethod;
 
@@ -85,7 +85,13 @@ public abstract class HttpService {
 					}
 				}
 			}
-			return sbReqeustQueryString.toString();
+			if (sbReqeustQueryString.length() > 0) {
+				sbReqeustQueryString
+						.setLength(sbReqeustQueryString.length() - 1);
+				return sbReqeustQueryString.toString();
+			} else {
+				return "";
+			}
 		} catch (UnsupportedEncodingException e) {
 			if (Constant.DEBUG) {
 				e.printStackTrace();
@@ -159,8 +165,9 @@ public abstract class HttpService {
 					String stringResult = convertStreamToString(instream);
 					if (Constant.DEBUG) {
 						System.out
-								.println(" ############### htttp response result : "
-										+ stringResult);
+								.println(" ############### htttp response result : #######################\r\n\r\n"
+										+ stringResult
+										+ "\r\n\r\n#########################################");
 					}
 					if (stringResult.length() > 0) {
 						process(stringResult);
@@ -192,9 +199,10 @@ public abstract class HttpService {
 		if (jsonHolder == null) {
 			jsonHolder = new JSONObject();
 		}
-		System.out.println("URI : " + getServiceUri());
 		Iterator<?> iterator = jsonHolder.keys();
-		System.out.println("#### input params : ####");
+		System.out.println("\r\n#### input params start: ####");
+		System.out.println("URI : " + getServiceUri());
+		System.out.println("REQUEST METHOD : " + mRequestMethod);
 		while (iterator.hasNext()) {
 			try {
 				String key = iterator.next().toString();
@@ -206,7 +214,7 @@ public abstract class HttpService {
 				}
 			}
 		}
-		System.out.println("#### : ####");
+		System.out.println("#### input params end: ####");
 	}
 
 	public String getErrorMessage() {

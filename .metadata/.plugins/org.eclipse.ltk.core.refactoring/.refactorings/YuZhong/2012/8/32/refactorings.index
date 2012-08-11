@@ -35,3 +35,17 @@
 1344353458794	Rename field 'mContent'
 1344355467769	Rename local variable 'userList'
 1344355503420	Rename field 'mBulletin'
+1344655118918	Rename local variable 'mPageSize'
+1344655126884	Rename local variable 'mPageNumber'
+1344702712260	Copy compilation unit
+1344702739640	Copy file
+1344702764273	Rename field 'mBulletinListAdapter'
+1344702811472	Rename method 'getBulletins'
+1344702926644	Copy file
+1344704299751	Rename field 'mCaptionTv'
+1344704629436	Rename local variable 'image'
+1344709021652	Copy compilation unit
+1344709237013	Copy file
+1344709570441	Rename method 'getBulletins'
+1344709749873	Rename field 'mCaptionTv'
+1344709777285	Rename field 'mImageIv'

@@ -24,34 +24,34 @@ import cn.amose.yuzhong.widget.PullToRefreshBase.OnLoadMoreListener;
 import cn.amose.yuzhong.widget.PullToRefreshBase.OnRefreshListener;
 import cn.amose.yuzhong.widget.PullToRefreshListView;
 
-public class BulletinActivity extends YZBaseActivity {
+public class ActivityActivity extends YZBaseActivity {
 	private GetAsyncTask mGetAsyncTask;
 	private PullToRefreshListView mPullToRefreshListView;
-	private BulletinListAdapter mBulletinListAdapter;
+	private BulletinListAdapter mListAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.bulletin);
-		mPullToRefreshListView = (PullToRefreshListView) findViewById(R.id.lv_bulletin);
+		setContentView(R.layout.activity);
+		mPullToRefreshListView = (PullToRefreshListView) findViewById(R.id.lv_activity);
 		mPullToRefreshListView.setOnRefreshListener(mOnRefreshListener);
 		mPullToRefreshListView.setOnLoadMoreListener(mOnLoadMoreListener);
-		mBulletinListAdapter = new BulletinListAdapter();
-		mBulletinListAdapter.setDataSource(new ArrayList<Bulletin>(0));
-		mPullToRefreshListView.setAdapter(mBulletinListAdapter);
+		mListAdapter = new BulletinListAdapter();
+		mListAdapter.setDataSource(new ArrayList<Bulletin>(0));
+		mPullToRefreshListView.setAdapter(mListAdapter);
 		mPullToRefreshListView.onLoadMoreStart();
-		getBulletins();
+		getActivities();
 	}
 
 	private OnRefreshListener mOnRefreshListener = new OnRefreshListener() {
 
 		@Override
 		public void onRefresh() {
-			mBulletinListAdapter.reset();
+			mListAdapter.reset();
 			if (mPullToRefreshListView.isLoadingMore()) {
 				mPullToRefreshListView.onLoadMoreComplete();
 			}
-			getBulletins();
+			getActivities();
 		}
 
 	};
@@ -59,10 +59,22 @@ public class BulletinActivity extends YZBaseActivity {
 
 		@Override
 		public void onLoadMore() {
-			getBulletins();
+			getActivities();
 		}
 
 	};
+
+	public void onJoinButtonClick(View v) {
+
+	}
+
+	public void onNoInterestButtonClick(View v) {
+
+	}
+
+	public void onLookMemberButtonClick(View v) {
+
+	}
 
 	class BulletinListAdapter extends BaseAdapter {
 		private int mPageNumber;
@@ -129,17 +141,17 @@ public class BulletinActivity extends YZBaseActivity {
 			if (convertView == null) {
 				viewHolder = new ViewHolder();
 				convertView = mLayoutInflater.inflate(
-						R.layout.listitem_bulletin, null);
-				viewHolder.mCaptionTv = (TextView) convertView
-						.findViewById(R.id.tv_bulletin_caption);
-				viewHolder.mDateTv = (TextView) convertView
-						.findViewById(R.id.tv_bulletin_date);
+						R.layout.listitem_activity, null);
+				viewHolder.mDescTv = (TextView) convertView
+						.findViewById(R.id.tv_activity_desc);
 				viewHolder.mTimeTv = (TextView) convertView
-						.findViewById(R.id.tv_bulletin_time);
+						.findViewById(R.id.tv_activity_time);
+				viewHolder.mAddrTv = (TextView) convertView
+						.findViewById(R.id.tv_activity_addr);
 				viewHolder.mTitleTv = (TextView) convertView
-						.findViewById(R.id.tv_bulletin_title);
+						.findViewById(R.id.tv_activity_title);
 				viewHolder.mImageIv = (AsyncImageView) convertView
-						.findViewById(R.id.iv_bulletin_image);
+						.findViewById(R.id.iv_activity_image);
 				convertView.setTag(viewHolder);
 			} else {
 				viewHolder = (ViewHolder) convertView.getTag();
@@ -149,21 +161,30 @@ public class BulletinActivity extends YZBaseActivity {
 			try {
 				JSONObject contentJson = new JSONObject(
 						bulletin.getContentJson());
-				viewHolder.mImageIv.setUrl(contentJson.getString("image"));
-				viewHolder.mCaptionTv.setText(contentJson.getString("caption"));
-				((View) viewHolder.mImageIv.getParent()).setTag(contentJson
-						.get("clickurl"));
+				Date date = new Date(contentJson.getLong("time"));
+				viewHolder.mTimeTv.setText(date.toLocaleString());
+				viewHolder.mAddrTv.setText(contentJson.getString("addr"));
+				String imageUrl = contentJson.optString("image", null);
+				if (imageUrl == null) {
+					viewHolder.mImageIv.setVisibility(View.GONE);
+				} else {
+					viewHolder.mImageIv.setVisibility(View.VISIBLE);
+					viewHolder.mImageIv.setUrl(imageUrl);
+				}
+				String desc = contentJson.optString("desc", null);
+				if (desc == null) {
+					viewHolder.mDescTv.setVisibility(View.GONE);
+				} else {
+					viewHolder.mDescTv.setVisibility(View.VISIBLE);
+					viewHolder.mDescTv.setText(desc);
+				}
 			} catch (JSONException e) {
 				if (Constant.DEBUG) {
 					e.printStackTrace();
 				}
 			}
 			Date date = new Date(bulletin.getTime());
-			viewHolder.mDateTv.setText(String.format("%d月%d日",
-					date.getMonth() + 1, date.getDate()));
-			viewHolder.mTimeTv.setText(String.format("%2d:%2d",
-					date.getHours(), date.getMinutes()));
-
+			viewHolder.mTimeTv.setText(date.toLocaleString());
 			return convertView;
 		}
 	}
@@ -171,17 +192,17 @@ public class BulletinActivity extends YZBaseActivity {
 	class ViewHolder {
 		AsyncImageView mImageIv;
 		TextView mTitleTv;
-		TextView mDateTv;
+		TextView mAddrTv;
 		TextView mTimeTv;
-		TextView mCaptionTv;
+		TextView mDescTv;
 	}
 
-	private void getBulletins() {
+	private void getActivities() {
 		JSONObject jsonHolder = new JSONObject();
 		try {
 			jsonHolder.put(Constant.JSON_KEY_UID,
 					PreferenceHelper.getAccountId());
-			jsonHolder.put(Constant.JSON_KEY_TYPE, Bulletin.TYPE_TEXT);
+			jsonHolder.put(Constant.JSON_KEY_TYPE, Bulletin.TYPE_ACTIVITY);
 			mGetAsyncTask = new GetAsyncTask(new GetBulletins(this), jsonHolder);
 			mGetAsyncTask.setOnDownloadListener(new OnDownloadListener() {
 
@@ -200,12 +221,10 @@ public class BulletinActivity extends YZBaseActivity {
 							Toast.makeText(getApplicationContext(), "nothing",
 									Toast.LENGTH_SHORT).show();
 						} else {
-							if (mBulletinListAdapter.incPageNumber() == 1) {
-								mBulletinListAdapter
-										.setDataSource(bulletinList);
+							if (mListAdapter.incPageNumber() == 1) {
+								mListAdapter.setDataSource(bulletinList);
 							} else {
-								mBulletinListAdapter
-										.appendDataSource(bulletinList);
+								mListAdapter.appendDataSource(bulletinList);
 							}
 						}
 					} else {

@@ -11,12 +11,10 @@ import cn.amose.yuzhong.util.Constant;
 
 public class Login extends HttpService {
 	private static final String ACTION = Constant.SERVER + "login";
-	private Context mContext;
 	private User mUser;
 
 	public Login(Context context) {
 		super(context);
-		mContext = context;
 		mRequestMethod = REQUEST_METHOD_POST;
 	}
 

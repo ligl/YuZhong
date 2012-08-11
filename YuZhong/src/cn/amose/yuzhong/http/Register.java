@@ -11,12 +11,10 @@ import cn.amose.yuzhong.util.Constant;
 
 public class Register extends HttpService {
 	private static final String ACTION = Constant.SERVER + "register";
-	private Context mContext;
 	private User mUser;
 
 	public Register(Context context) {
 		super(context);
-		mContext = context;
 		mRequestMethod = REQUEST_METHOD_POST;
 	}
 

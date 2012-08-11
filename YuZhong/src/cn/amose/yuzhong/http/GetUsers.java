@@ -7,15 +7,15 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import cn.amose.yuzhong.R;
-import cn.amose.yuzhong.convert.BulletinJSONConvert;
-import cn.amose.yuzhong.model.Bulletin;
+import cn.amose.yuzhong.convert.UserJSONConvert;
+import cn.amose.yuzhong.model.User;
 import cn.amose.yuzhong.util.Constant;
 
-public class GetBulletins extends HttpService {
-	private static final String ACTION = Constant.SERVER + "getbulletins";
-	private ArrayList<Bulletin> mBulletinList;
+public class GetUsers extends HttpService {
+	private static final String ACTION = Constant.SERVER + "getusers";
+	private ArrayList<User> mUserList;
 
-	public GetBulletins(Context context) {
+	public GetUsers(Context context) {
 		super(context);
 	}
 
@@ -27,17 +27,17 @@ public class GetBulletins extends HttpService {
 			switch (jsonCode) {
 			case Constant.JSON_CODE_SUCCESS:
 				mErrorMessage = null;
-				mBulletinList = BulletinJSONConvert
+				mUserList = UserJSONConvert
 						.convertJsonArrayToItemList(jsonHolder
-								.getJSONArray("bulletins"));
+								.getJSONArray("users"));
 				break;
 			case Constant.JSON_LOGIN_USER_PASSWORD_ERROR:
-				mBulletinList = null;
+				mUserList = null;
 				mErrorMessage = mContext
 						.getString(R.string.login_toast_namepassworderror);
 				break;
 			default:
-				mBulletinList = null;
+				mUserList = null;
 				mErrorMessage = mContext.getString(R.string.common_toast_error);
 				break;
 			}
@@ -54,7 +54,7 @@ public class GetBulletins extends HttpService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getResult() {
-		return (T) mBulletinList;
+		return (T) mUserList;
 	}
 
 	@Override

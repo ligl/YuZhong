@@ -17,8 +17,6 @@ public class SplashActivity extends Activity {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
-			// TODO test
-			startActivity(new Intent(SplashActivity.this, LoginActivity.class));
 			if (PreferenceHelper.getAccountId() == 0) {
 				startActivity(new Intent(SplashActivity.this,
 						LoginActivity.class));

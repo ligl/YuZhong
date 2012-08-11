@@ -18,7 +18,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 import cn.amose.yuzhong.asynctask.GetAsyncTask;
 import cn.amose.yuzhong.asynctask.GetAsyncTask.OnDownloadListener;
+import cn.amose.yuzhong.database.PreferenceHelper;
 import cn.amose.yuzhong.http.Login;
+import cn.amose.yuzhong.model.User;
 import cn.amose.yuzhong.util.AppUtils;
 import cn.amose.yuzhong.util.Md5Util;
 
@@ -94,6 +96,7 @@ public class LoginActivity extends Activity {
 						mProgressDialog.dismiss();
 					}
 					if (errorMessage == null) {
+						PreferenceHelper.initDefaultAccount((User) result);
 						AppUtils.startMainActivity(LoginActivity.this);
 						finish();
 					} else {
