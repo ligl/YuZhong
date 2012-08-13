@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -62,6 +64,23 @@ public class MemberActivity extends YZBaseActivity {
 		}
 
 	};
+
+	public void onCallClick(View v) {
+		String phone = ((View) v.getParent()).getTag().toString();
+		Intent intent = new Intent();
+		intent.setAction(Intent.ACTION_DIAL);
+		intent.setData(Uri.parse("tel:" + phone));
+		startActivity(intent);
+	}
+
+	public void onSMSClick(View v) {
+		String phone = ((View) v.getParent()).getTag().toString();
+		Intent intent = new Intent();
+		intent.setAction(Intent.ACTION_SENDTO);
+		intent.setData(Uri.parse("smsto:" + phone));
+		intent.putExtra("sms_body", "#羽众#");
+		startActivity(intent);
+	}
 
 	class UserListAdapter extends BaseAdapter {
 		private int mPageNumber;
@@ -140,6 +159,7 @@ public class MemberActivity extends YZBaseActivity {
 			User user = mUserList.get(position);
 			viewHolder.mNameTv.setText(user.getName());
 			viewHolder.mAvatarIv.setUrl(user.getAvatarUrl());
+			((View) viewHolder.mAvatarIv.getParent()).setTag(user.getMobile());
 			return convertView;
 		}
 	}

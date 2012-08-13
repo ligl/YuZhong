@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="cn.amose.yuzhong.MemberActivity"/>
-<fullyQualifiedTypeName name="cn.amose.yuzhong.database.Preferences"/>
-<fullyQualifiedTypeName name="cn.amose.yuzhong.RegisterActivity"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.model.User"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.R"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
@@ -38,23 +35,29 @@
 <fullyQualifiedTypeName name="com.emilsjolander.components.StickyListHeaders.StickyListHeadersListView"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.YZBaseActivity.TestBaseAdapter"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="cn.amose.yuzhong.R.id"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.R.string"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.YZBaseActivity.SegmentItem"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.asynctask.GetAsyncTask"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.http.GetBulletins"/>
-<fullyQualifiedTypeName name="cn.amose.yuzhong.database.PreferenceHelper"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.asynctask.GetAsyncTask.OnDownloadListener"/>
-<fullyQualifiedTypeName name="android.widget.Toast"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.widget.PullToRefreshListView"/>
 <fullyQualifiedTypeName name="android.widget.BaseAdapter"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.BulletinActivity.BulletinListAdapter"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.R.layout"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.BulletinActivity.ViewHolder"/>
-<fullyQualifiedTypeName name="cn.amose.yuzhong.widget.AsyncImageView"/>
 <fullyQualifiedTypeName name="org.json.JSONObject"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.util.Constant"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.model.Bulletin"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.widget.PullToRefreshBase.OnRefreshListener"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.widget.PullToRefreshBase.OnLoadMoreListener"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.R.id"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.YZBaseActivity"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.BulletinActivity"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.ActivityActivity"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.database.PreferenceHelper"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.widget.AsyncImageView"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.MemberActivity"/>
 </qualifiedTypeNameHistroy>

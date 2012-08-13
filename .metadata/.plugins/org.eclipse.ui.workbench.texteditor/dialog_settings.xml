@@ -3,36 +3,40 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="312" key="DIALOG_WIDTH"/>
 		<item value="136" key="DIALOG_Y_ORIGIN"/>
-		<item value="438" key="DIALOG_HEIGHT"/>
 		<item value="842" key="DIALOG_X_ORIGIN"/>
+		<item value="438" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="true" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="Bulletin" key="selection"/>
+		<item value="user" key="selection"/>
 		<list key="findhistory">
-			<item value="User"/>
-			<item value="getm"/>
+			<item value="bulletin"/>
+			<item value="Bulletin"/>
 			<item value="setm"/>
+			<item value="getm"/>
+			<item value="User"/>
 			<item value="process_user"/>
 			<item value=");"/>
 			<item value="&apos;, "/>
-			<item value="define(&apos;"/>
-			<item value="setUrl"/>
 		</list>
 		<list key="replacehistory">
-			<item value="Bulletin"/>
-			<item value="get"/>
+			<item value="user"/>
+			<item value="User"/>
+			<item value="member"/>
+			<item value="activity"/>
 			<item value="set"/>
+			<item value="get"/>
+			<item value="Bulletin"/>
 			<item value="update_user_profile"/>
-			<item value=";"/>
-			<item value="="/>
-			<item value="public static final int "/>
-			<item value="birthday"/>
 		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="244" key="DIALOG_Y_ORIGIN"/>
+		<item value="369" key="DIALOG_X_ORIGIN"/>
 	</section>
 </section>

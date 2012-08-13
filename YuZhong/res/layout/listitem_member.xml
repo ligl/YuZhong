@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/cn.amose.yuzhong"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
@@ -11,13 +12,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#888888"
-        android:padding="5dp" />
+        android:gravity="center"
+        android:minWidth="60dp"
+        android:padding="5dp"
+        android:text="李广亮" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#f1f1f1"
-        android:gravity="center_vertical"
         android:orientation="vertical"
         android:padding="10dp" >
 
@@ -26,9 +29,31 @@
             android:id="@+id/iv_member_avatar"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
             android:scaleType="fitCenter"
             app:defaultSrc="@drawable/ic_launcher" />
-    </LinearLayout>
+
+        <Button
+            android:id="@+id/ibtn_member_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_member_avatar"
+            android:gravity="center"
+            android:onClick="onCallClick"
+            android:text="打电话" />
+
+        <Button
+            android:id="@+id/ibtn_member_sms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_member_avatar"
+            android:layout_toRightOf="@id/ibtn_member_call"
+            android:gravity="center"
+            android:onClick="onSMSClick"
+            android:text="发短信" />
+    </RelativeLayout>
 
 </LinearLayout>
