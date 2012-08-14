@@ -65,6 +65,9 @@ public class ActivityActivity extends YZBaseActivity {
 	};
 
 	public void onJoinButtonClick(View v) {
+		int position = Integer.parseInt(((View) v.getParent()).getTag()
+				.toString());
+		Bulletin bulletin = mListAdapter.getDataSource().get(position);
 
 	}
 
@@ -158,6 +161,7 @@ public class ActivityActivity extends YZBaseActivity {
 			}
 			Bulletin bulletin = mBulletinList.get(position);
 			viewHolder.mTitleTv.setText(bulletin.getTitle());
+			((View) viewHolder.mImageIv.getParent()).setTag(position);
 			try {
 				JSONObject contentJson = new JSONObject(
 						bulletin.getContentJson());
@@ -198,6 +202,52 @@ public class ActivityActivity extends YZBaseActivity {
 	}
 
 	private void getActivities() {
+		JSONObject jsonHolder = new JSONObject();
+		try {
+			jsonHolder.put(Constant.JSON_KEY_UID,
+					PreferenceHelper.getAccountId());
+			jsonHolder.put(Constant.JSON_KEY_TYPE, Bulletin.TYPE_ACTIVITY);
+			cancelAsyncTaskIfNeed();
+			mGetAsyncTask = new GetAsyncTask(new GetBulletins(this), jsonHolder);
+			mGetAsyncTask.setOnDownloadListener(new OnDownloadListener() {
+
+				@Override
+				public <T> void onDownloadComplete(T result, String errorMessage) {
+					if (mPullToRefreshListView.isRefreshing()) {
+						mPullToRefreshListView.onRefreshComplete();
+					}
+					if (mPullToRefreshListView.isLoadingMore()) {
+						mPullToRefreshListView.onLoadMoreComplete();
+					}
+					if (errorMessage == null) {
+						ArrayList<Bulletin> bulletinList = (ArrayList<Bulletin>) result;
+						if (bulletinList == null || bulletinList.isEmpty()) {
+							// no data
+							Toast.makeText(getApplicationContext(), "nothing",
+									Toast.LENGTH_SHORT).show();
+						} else {
+							if (mListAdapter.incPageNumber() == 1) {
+								mListAdapter.setDataSource(bulletinList);
+							} else {
+								mListAdapter.appendDataSource(bulletinList);
+							}
+						}
+					} else {
+						Toast.makeText(getApplicationContext(), errorMessage,
+								Toast.LENGTH_SHORT).show();
+					}
+
+				}
+			});
+			mGetAsyncTask.execute();
+		} catch (JSONException e) {
+			if (Constant.DEBUG) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private void join() {
 		JSONObject jsonHolder = new JSONObject();
 		try {
 			jsonHolder.put(Constant.JSON_KEY_UID,

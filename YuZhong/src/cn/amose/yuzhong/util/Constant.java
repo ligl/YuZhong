@@ -19,8 +19,8 @@ public final class Constant {
 	public static final int JSON_UPDATEUSERSTATUS_FAILED = 409;
 	public static final int JSON_UPDATEUSERSTATUS_NOTPERMISSION = 410;
 
-	public static final String JSON_KEY_PAGE_NUMBER = "pagenumber";
-	public static final String JSON_KEY_PAGE_SIZE = "pagesize";
+	public static final String JSON_KEY_PAGE_NUMBER = "pn";
+	public static final String JSON_KEY_PAGE_SIZE = "ps";
 	public static final String JSON_KEY_UID = "uid";
 	public static final String JSON_KEY_TYPE = "type";
 

@@ -5,8 +5,8 @@
 	<section name="org.eclipse.wst.sse.ui.quick_outline">
 		<item value="179" key="org.eclipse.wst.sse.ui.internal.quickoutline.QuickOutlinePopupDialogDIALOG_Y_ORIGIN"/>
 		<item value="true" key="org.eclipse.wst.sse.ui.internal.quickoutline.QuickOutlinePopupDialogDIALOG_USE_PERSISTED_LOCATION"/>
-		<item value="352" key="org.eclipse.wst.sse.ui.internal.quickoutline.QuickOutlinePopupDialogDIALOG_WIDTH"/>
 		<item value="518" key="org.eclipse.wst.sse.ui.internal.quickoutline.QuickOutlinePopupDialogDIALOG_X_ORIGIN"/>
+		<item value="352" key="org.eclipse.wst.sse.ui.internal.quickoutline.QuickOutlinePopupDialogDIALOG_WIDTH"/>
 		<item value="true" key="org.eclipse.wst.sse.ui.internal.quickoutline.QuickOutlinePopupDialogDIALOG_USE_PERSISTED_SIZE"/>
 		<item value="370" key="org.eclipse.wst.sse.ui.internal.quickoutline.QuickOutlinePopupDialogDIALOG_HEIGHT"/>
 	</section>
