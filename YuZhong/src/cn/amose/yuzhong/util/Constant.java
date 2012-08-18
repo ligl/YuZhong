@@ -9,6 +9,7 @@ public final class Constant {
 	public static final String JSON_KEY_MSG = "msg";
 	public static final String JSON_KEY_DATA = "data";
 	public static final int JSON_CODE_SUCCESS = 200;
+	public static final int JSON_PARAMSINVALID = 205;
 	public static final int JSON_LOGIN_USER_PASSWORD_ERROR = 402;
 	public static final int JSON_REGISTER_MOBILE_INVALID = 403;
 	public static final int JSON_REGISTER_EMPTY_PASSWORD = 404;

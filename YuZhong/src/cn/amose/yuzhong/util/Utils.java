@@ -3,7 +3,6 @@ package cn.amose.yuzhong.util;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Iterator;
 
 import org.json.JSONException;
@@ -11,6 +10,7 @@ import org.json.JSONObject;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -21,10 +21,10 @@ import android.net.Uri;
 import android.os.Environment;
 
 public final class Utils {
-	public static String formatDateTime(Date date) {
-		// yyyy-MM-dd kk:mm:ss
-		return android.text.format.DateFormat.format("yyyy-MM-dd", date)
-				.toString();
+
+	public static String formatDateTime(long timestamp) {
+		return android.text.format.DateFormat.format("yyyy-MM-dd hh:mm",
+				timestamp).toString();
 	}
 
 	public static boolean checkNetwork(Context context) {
@@ -254,5 +254,20 @@ public final class Utils {
 			}
 			System.out.println("####################################");
 		}
+	}
+
+	public static void dial(Context context, String phone) {
+		Intent intent = new Intent();
+		intent.setAction(Intent.ACTION_DIAL);
+		intent.setData(Uri.parse("tel:" + phone));
+		context.startActivity(intent);
+	}
+
+	public static void sms(Context context, String phone, String msg) {
+		Intent intent = new Intent();
+		intent.setAction(Intent.ACTION_SENDTO);
+		intent.setData(Uri.parse("smsto:" + phone));
+		intent.putExtra("sms_body", "#羽众#" + msg);
+		context.startActivity(intent);
 	}
 }

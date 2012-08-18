@@ -1,7 +1,6 @@
 package cn.amose.yuzhong;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,9 +15,11 @@ import android.widget.Toast;
 import cn.amose.yuzhong.asynctask.GetAsyncTask;
 import cn.amose.yuzhong.asynctask.GetAsyncTask.OnDownloadListener;
 import cn.amose.yuzhong.database.PreferenceHelper;
-import cn.amose.yuzhong.http.GetBulletins;
-import cn.amose.yuzhong.model.Bulletin;
+import cn.amose.yuzhong.http.GetActivities;
+import cn.amose.yuzhong.model.Activity;
+import cn.amose.yuzhong.model.User;
 import cn.amose.yuzhong.util.Constant;
+import cn.amose.yuzhong.util.Utils;
 import cn.amose.yuzhong.widget.AsyncImageView;
 import cn.amose.yuzhong.widget.PullToRefreshBase.OnLoadMoreListener;
 import cn.amose.yuzhong.widget.PullToRefreshBase.OnRefreshListener;
@@ -27,7 +28,7 @@ import cn.amose.yuzhong.widget.PullToRefreshListView;
 public class ActivityActivity extends YZBaseActivity {
 	private GetAsyncTask mGetAsyncTask;
 	private PullToRefreshListView mPullToRefreshListView;
-	private BulletinListAdapter mListAdapter;
+	private ActivityListAdapter mListAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +37,8 @@ public class ActivityActivity extends YZBaseActivity {
 		mPullToRefreshListView = (PullToRefreshListView) findViewById(R.id.lv_activity);
 		mPullToRefreshListView.setOnRefreshListener(mOnRefreshListener);
 		mPullToRefreshListView.setOnLoadMoreListener(mOnLoadMoreListener);
-		mListAdapter = new BulletinListAdapter();
-		mListAdapter.setDataSource(new ArrayList<Bulletin>(0));
+		mListAdapter = new ActivityListAdapter();
+		mListAdapter.setDataSource(new ArrayList<Activity>(0));
 		mPullToRefreshListView.setAdapter(mListAdapter);
 		mPullToRefreshListView.onLoadMoreStart();
 		getActivities();
@@ -65,9 +66,8 @@ public class ActivityActivity extends YZBaseActivity {
 	};
 
 	public void onJoinButtonClick(View v) {
-		int position = Integer.parseInt(((View) v.getParent()).getTag()
-				.toString());
-		Bulletin bulletin = mListAdapter.getDataSource().get(position);
+		int position = Integer.parseInt(v.getTag().toString());
+		Activity bulletin = mListAdapter.getDataSource().get(position);
 
 	}
 
@@ -79,28 +79,39 @@ public class ActivityActivity extends YZBaseActivity {
 
 	}
 
-	class BulletinListAdapter extends BaseAdapter {
+	public void onCallClick(View v) {
+		String phone = ((View) v.getParent()).getTag().toString();
+		Utils.dial(this, phone);
+	}
+
+	public void onSMSClick(View v) {
+		String phone = ((View) v.getParent()).getTag().toString();
+		String msg = "";
+		Utils.sms(this, phone, msg);
+	}
+
+	class ActivityListAdapter extends BaseAdapter {
 		private int mPageNumber;
 		private int mPageSize = 5;
-		private ArrayList<Bulletin> mBulletinList;
+		private ArrayList<Activity> mActivityList;
 
 		public void reset() {
 			mPageNumber = 0;
 			mPageSize = 5;
 		}
 
-		public void setDataSource(ArrayList<Bulletin> bulletinList) {
-			mBulletinList = bulletinList;
+		public void setDataSource(ArrayList<Activity> bulletinList) {
+			mActivityList = bulletinList;
 			notifyDataSetChanged();
 		}
 
-		public void appendDataSource(ArrayList<Bulletin> bulletinList) {
-			mBulletinList.addAll(bulletinList);
+		public void appendDataSource(ArrayList<Activity> bulletinList) {
+			mActivityList.addAll(bulletinList);
 			notifyDataSetChanged();
 		}
 
-		public ArrayList<Bulletin> getDataSource() {
-			return mBulletinList;
+		public ArrayList<Activity> getDataSource() {
+			return mActivityList;
 		}
 
 		public synchronized int incPageNumber() {
@@ -125,12 +136,12 @@ public class ActivityActivity extends YZBaseActivity {
 
 		@Override
 		public int getCount() {
-			return mBulletinList.size();
+			return mActivityList.size();
 		}
 
 		@Override
 		public Object getItem(int position) {
-			return mBulletinList.get(position);
+			return mActivityList.get(position);
 		}
 
 		@Override
@@ -153,52 +164,75 @@ public class ActivityActivity extends YZBaseActivity {
 						.findViewById(R.id.tv_activity_addr);
 				viewHolder.mTitleTv = (TextView) convertView
 						.findViewById(R.id.tv_activity_title);
-				viewHolder.mImageIv = (AsyncImageView) convertView
+				viewHolder.mPhotoIv = (AsyncImageView) convertView
 						.findViewById(R.id.iv_activity_image);
+				viewHolder.mTipsLableTv = (TextView) convertView
+						.findViewById(R.id.tv_activity_tipslabel);
+				viewHolder.mManagerTv = (TextView) convertView
+						.findViewById(R.id.tv_activity_manager);
+				viewHolder.mJoinView = convertView
+						.findViewById(R.id.btn_activity_join);
+				viewHolder.mNoInterestView = convertView
+						.findViewById(R.id.btn_activity_nointerest);
 				convertView.setTag(viewHolder);
 			} else {
 				viewHolder = (ViewHolder) convertView.getTag();
 			}
-			Bulletin bulletin = mBulletinList.get(position);
-			viewHolder.mTitleTv.setText(bulletin.getTitle());
-			((View) viewHolder.mImageIv.getParent()).setTag(position);
-			try {
-				JSONObject contentJson = new JSONObject(
-						bulletin.getContentJson());
-				Date date = new Date(contentJson.getLong("time"));
-				viewHolder.mTimeTv.setText(date.toLocaleString());
-				viewHolder.mAddrTv.setText(contentJson.getString("addr"));
-				String imageUrl = contentJson.optString("image", null);
-				if (imageUrl == null) {
-					viewHolder.mImageIv.setVisibility(View.GONE);
-				} else {
-					viewHolder.mImageIv.setVisibility(View.VISIBLE);
-					viewHolder.mImageIv.setUrl(imageUrl);
-				}
-				String desc = contentJson.optString("desc", null);
-				if (desc == null) {
-					viewHolder.mDescTv.setVisibility(View.GONE);
-				} else {
-					viewHolder.mDescTv.setVisibility(View.VISIBLE);
-					viewHolder.mDescTv.setText(desc);
-				}
-			} catch (JSONException e) {
-				if (Constant.DEBUG) {
-					e.printStackTrace();
-				}
+			Activity activity = mActivityList.get(position);
+			viewHolder.mTitleTv.setText(activity.getTitle());
+			viewHolder.mTimeTv.setText("活动时间："
+					+ Utils.formatDateTime(activity.getActivityTime()));
+			viewHolder.mAddrTv.setText("活动地点：" + activity.getAddr());
+			if ("".equals(activity.getPhoto())) {
+				viewHolder.mPhotoIv.setVisibility(View.GONE);
+			} else {
+				viewHolder.mPhotoIv.setVisibility(View.VISIBLE);
+				viewHolder.mPhotoIv.setUrl(activity.getPhoto());
 			}
-			Date date = new Date(bulletin.getTime());
-			viewHolder.mTimeTv.setText(date.toLocaleString());
+			if (activity.getDesc() == null) {
+				viewHolder.mDescTv.setVisibility(View.GONE);
+			} else {
+				viewHolder.mDescTv.setVisibility(View.VISIBLE);
+				viewHolder.mDescTv.setText(activity.getDesc());
+			}
+			long curTime = System.currentTimeMillis();
+			if (curTime < activity.getSignupBeginTime()) {
+				// 没开始
+				viewHolder.mTipsLableTv.setVisibility(View.VISIBLE);
+				viewHolder.mJoinView.setVisibility(View.GONE);
+				viewHolder.mNoInterestView.setVisibility(View.GONE);
+				viewHolder.mTipsLableTv.setText("活动尚未开始报名，如需帮助，请联系^");
+			} else if (curTime > activity.getSignupEndTime()) {
+				// 已结束
+				viewHolder.mTipsLableTv.setVisibility(View.VISIBLE);
+				viewHolder.mJoinView.setVisibility(View.GONE);
+				viewHolder.mNoInterestView.setVisibility(View.GONE);
+				viewHolder.mTipsLableTv.setText("活动报名时间已结束，如需帮助，请联系^");
+			} else {
+				// 活动期间
+				viewHolder.mTipsLableTv.setVisibility(View.GONE);
+				viewHolder.mJoinView.setVisibility(View.VISIBLE);
+				viewHolder.mNoInterestView.setVisibility(View.VISIBLE);
+			}
+			User user = activity.getManager();
+			viewHolder.mManagerTv.setText(user.getName());
+			((View) viewHolder.mManagerTv.getParent()).setTag(user.getMobile());
+			viewHolder.mJoinView.setTag(position);
+			viewHolder.mNoInterestView.setTag(position);
 			return convertView;
 		}
 	}
 
 	class ViewHolder {
-		AsyncImageView mImageIv;
+		AsyncImageView mPhotoIv;
 		TextView mTitleTv;
 		TextView mAddrTv;
 		TextView mTimeTv;
 		TextView mDescTv;
+		TextView mManagerTv;
+		TextView mTipsLableTv;
+		View mJoinView;
+		View mNoInterestView;
 	}
 
 	private void getActivities() {
@@ -206,9 +240,9 @@ public class ActivityActivity extends YZBaseActivity {
 		try {
 			jsonHolder.put(Constant.JSON_KEY_UID,
 					PreferenceHelper.getAccountId());
-			jsonHolder.put(Constant.JSON_KEY_TYPE, Bulletin.TYPE_ACTIVITY);
 			cancelAsyncTaskIfNeed();
-			mGetAsyncTask = new GetAsyncTask(new GetBulletins(this), jsonHolder);
+			mGetAsyncTask = new GetAsyncTask(new GetActivities(this),
+					jsonHolder);
 			mGetAsyncTask.setOnDownloadListener(new OnDownloadListener() {
 
 				@Override
@@ -220,7 +254,7 @@ public class ActivityActivity extends YZBaseActivity {
 						mPullToRefreshListView.onLoadMoreComplete();
 					}
 					if (errorMessage == null) {
-						ArrayList<Bulletin> bulletinList = (ArrayList<Bulletin>) result;
+						ArrayList<Activity> bulletinList = (ArrayList<Activity>) result;
 						if (bulletinList == null || bulletinList.isEmpty()) {
 							// no data
 							Toast.makeText(getApplicationContext(), "nothing",
@@ -252,8 +286,8 @@ public class ActivityActivity extends YZBaseActivity {
 		try {
 			jsonHolder.put(Constant.JSON_KEY_UID,
 					PreferenceHelper.getAccountId());
-			jsonHolder.put(Constant.JSON_KEY_TYPE, Bulletin.TYPE_ACTIVITY);
-			mGetAsyncTask = new GetAsyncTask(new GetBulletins(this), jsonHolder);
+			mGetAsyncTask = new GetAsyncTask(new GetActivities(this),
+					jsonHolder);
 			mGetAsyncTask.setOnDownloadListener(new OnDownloadListener() {
 
 				@Override
@@ -265,7 +299,7 @@ public class ActivityActivity extends YZBaseActivity {
 						mPullToRefreshListView.onLoadMoreComplete();
 					}
 					if (errorMessage == null) {
-						ArrayList<Bulletin> bulletinList = (ArrayList<Bulletin>) result;
+						ArrayList<Activity> bulletinList = (ArrayList<Activity>) result;
 						if (bulletinList == null || bulletinList.isEmpty()) {
 							// no data
 							Toast.makeText(getApplicationContext(), "nothing",

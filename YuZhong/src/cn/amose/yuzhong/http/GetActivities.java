@@ -7,15 +7,15 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import cn.amose.yuzhong.R;
-import cn.amose.yuzhong.convert.BulletinJSONConvert;
-import cn.amose.yuzhong.model.Bulletin;
+import cn.amose.yuzhong.convert.ActivityJSONConvert;
+import cn.amose.yuzhong.model.Activity;
 import cn.amose.yuzhong.util.Constant;
 
-public class GetBulletins extends HttpService {
-	private static final String ACTION = Constant.SERVER + "getbulletins";
-	private ArrayList<Bulletin> mBulletinList;
+public class GetActivities extends HttpService {
+	private static final String ACTION = Constant.SERVER + "getactivities";
+	private ArrayList<Activity> mActivityList;
 
-	public GetBulletins(Context context) {
+	public GetActivities(Context context) {
 		super(context);
 	}
 
@@ -27,12 +27,17 @@ public class GetBulletins extends HttpService {
 			switch (jsonCode) {
 			case Constant.JSON_CODE_SUCCESS:
 				mErrorMessage = null;
-				mBulletinList = BulletinJSONConvert
+				mActivityList = ActivityJSONConvert
 						.convertJsonArrayToItemList(jsonHolder
-								.getJSONArray("bulletins"));
+								.getJSONArray("activities"));
+				break;
+			case Constant.JSON_PARAMSINVALID:
+				mActivityList = null;
+				mErrorMessage = mContext
+						.getString(R.string.common_toast_paramsinvalid);
 				break;
 			default:
-				mBulletinList = null;
+				mActivityList = null;
 				mErrorMessage = mContext.getString(R.string.common_toast_error);
 				break;
 			}
@@ -49,7 +54,7 @@ public class GetBulletins extends HttpService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getResult() {
-		return (T) mBulletinList;
+		return (T) mActivityList;
 	}
 
 	@Override

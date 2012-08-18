@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +18,7 @@ import cn.amose.yuzhong.database.PreferenceHelper;
 import cn.amose.yuzhong.http.GetUsers;
 import cn.amose.yuzhong.model.User;
 import cn.amose.yuzhong.util.Constant;
+import cn.amose.yuzhong.util.Utils;
 import cn.amose.yuzhong.widget.AsyncImageView;
 import cn.amose.yuzhong.widget.PullToRefreshBase.OnLoadMoreListener;
 import cn.amose.yuzhong.widget.PullToRefreshBase.OnRefreshListener;
@@ -67,19 +66,13 @@ public class MemberActivity extends YZBaseActivity {
 
 	public void onCallClick(View v) {
 		String phone = ((View) v.getParent()).getTag().toString();
-		Intent intent = new Intent();
-		intent.setAction(Intent.ACTION_DIAL);
-		intent.setData(Uri.parse("tel:" + phone));
-		startActivity(intent);
+		Utils.dial(this, phone);
 	}
 
 	public void onSMSClick(View v) {
 		String phone = ((View) v.getParent()).getTag().toString();
-		Intent intent = new Intent();
-		intent.setAction(Intent.ACTION_SENDTO);
-		intent.setData(Uri.parse("smsto:" + phone));
-		intent.putExtra("sms_body", "#羽众#");
-		startActivity(intent);
+		String msg = "";
+		Utils.sms(this, phone, msg);
 	}
 
 	class UserListAdapter extends BaseAdapter {

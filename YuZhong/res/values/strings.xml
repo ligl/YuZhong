@@ -12,6 +12,7 @@
     <string name="common_toast_uploaderror">上传文件失败</string>
     <string name="common_toast_getimagefailed">图片获取失败</string>
     <string name="common_toast_unsupport">不支持该文件类型</string>
+    <string name="common_toast_paramsinvalid">参数无效</string>
     <string name="common_label_loading">正在加载,请稍候...</string>
     <string name="common_dg_title_info">提示</string>
     <string name="common_dg_msg_operation">正在处理，请稍后...</string>

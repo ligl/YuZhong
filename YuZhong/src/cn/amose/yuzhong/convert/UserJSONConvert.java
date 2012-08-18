@@ -22,8 +22,9 @@ public class UserJSONConvert {
 
 	public static User convertJsonToItem(JSONObject json) throws JSONException {
 		return new User(json.getInt("uid"), json.getString("mobile"),
-				json.getString("name"), json.getString("avatar"),
-				json.getLong("birthday"), json.getInt("gender"), null,
-				json.getInt("status"));
+				json.getString("name"), json.optString("avatar", null),
+				json.optLong("birthday"), json.optInt("gender",
+						User.USER_GENDER_UNKOWN), null, json.optInt("status",
+						User.USER_STATUS_UNKOWN));
 	}
 }

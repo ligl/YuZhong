@@ -3,8 +3,7 @@ package cn.amose.yuzhong.model;
 public class Bulletin {
 	public static final int TYPE_ALL = 0;
 	public static final int TYPE_TEXT = 1;
-	public static final int TYPE_ACTIVITY = 2;
-	public static final int TYPE_NEWS = 3;
+	public static final int TYPE_NEWS = 2;
 	private int mBId;
 	private int mUId;
 	private String mUName;
