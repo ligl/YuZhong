@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="cn.amose.yuzhong.R"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="cn.amose.yuzhong.convert.UserJSONConvert"/>
-<fullyQualifiedTypeName name="cn.amose.yuzhong.http.Register"/>
-<fullyQualifiedTypeName name="android.widget.RadioGroup"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="android.view.animation.AnimationUtils"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.R.anim"/>
 <fullyQualifiedTypeName name="android.app.DatePickerDialog"/>
 <fullyQualifiedTypeName name="android.app.DatePickerDialog.OnDateSetListener"/>
@@ -60,4 +53,11 @@
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.model.Bulletin"/>
 <fullyQualifiedTypeName name="cn.amose.yuzhong.util.Constant"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.model.Activity"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.convert.UserJSONConvert"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.http.GetActivities"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.util.Utils"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.Currency"/>
+<fullyQualifiedTypeName name="cn.amose.yuzhong.model.User"/>
 </qualifiedTypeNameHistroy>

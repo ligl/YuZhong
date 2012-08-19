@@ -6,6 +6,7 @@ import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +42,9 @@ public class BulletinActivity extends YZBaseActivity {
 		mPullToRefreshListView.setAdapter(mBulletinListAdapter);
 		mPullToRefreshListView.onLoadMoreStart();
 		getBulletins();
+		// TODO test
+		Intent bootIntent = new Intent(this, MainService.class);
+		startService(bootIntent);
 	}
 
 	private OnRefreshListener mOnRefreshListener = new OnRefreshListener() {

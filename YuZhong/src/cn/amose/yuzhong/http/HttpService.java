@@ -118,17 +118,17 @@ public abstract class HttpService {
 				}
 				URL url = new URL(httpAction);
 				connection = (HttpURLConnection) url.openConnection();
+				connection.setRequestMethod(mRequestMethod);
 				connection.setConnectTimeout(10000);
 				connection.setUseCaches(false);
+				connection.setRequestProperty("Content-Type",
+						"application/x-www-form-urlencoded");
 				if (!mRequestMethod.equals(REQUEST_METHOD_GET)) {
-					connection.setRequestMethod(mRequestMethod);
 					connection.setDoInput(true);
 					connection.setDoOutput(true);
 					connection.getOutputStream().write(
 							paramsJsonString.getBytes());
 				}
-				connection.setRequestProperty("Content-Type",
-						"application/x-www-form-urlencoded");
 			} catch (SocketTimeoutException e) {
 				if (Constant.DEBUG) {
 					e.printStackTrace();
